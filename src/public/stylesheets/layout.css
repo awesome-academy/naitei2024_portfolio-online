@@ -1,0 +1,21 @@
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+.text-green {
+  color:#28a745
+}
+.text-orange {
+  color:#ffc107!important
+}
+.text-red{
+  color:#dc3545!important
+}
+.mt-5 {
+  margin-top: 1.25rem
+}
+.ml-5 {
+  margin-left: 1.25rem
+}
+
