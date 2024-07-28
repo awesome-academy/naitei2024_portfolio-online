@@ -26,8 +26,8 @@ export const registerPost = [
       console.log(errors.array())
       return
     } else {
-      const { email, password, fullname, phoneNumber } = req.body
-      const user = await authService.register(fullname, email, password, phoneNumber)
+      const { fullname, password, email, phoneNumber } = req.body
+      const user = await authService.register(fullname, password, email, phoneNumber)
       req.flash('success', 'Register successfully')
       res.redirect('/login')
     }

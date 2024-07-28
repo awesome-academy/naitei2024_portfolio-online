@@ -5,7 +5,7 @@ export default class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ unique: true })
+  @Column()
   username: string
 
   @Column({ unique: true })
