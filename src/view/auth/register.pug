@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .auth-form
+    form(method='POST' action='/register')
+      if errors
+        ul
+          for error in errors
+            .alert.alert-danger(role='alert')
+              li.text-danger!= error.msg
+      .form-icon
+        span
+          i.icon.icon-user
+      .form-group
+        input.form-control.item(type='text' name='fullname' id='fullName' placeholder=t('auth.fullname'))
+      .form-group
+        input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password'))
+      .form-group
+        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email'))
+      .form-group
+        input.form-control.item(type='text' name='username' id='userName' placeholder=t('auth.userName'))
+      .form-group
+        button.btn.btn-block.create-account(type='submit')= t('auth.createAccount')
+    .social-media
+      h5= t('auth.signUpWithSocialMedia')
+      .social-icons
+        a(href='#')
+          i.icon-social-facebook(title='Facebook')
+        a(href='#')
+          i.icon-social-google(title='Google')
+        a(href='#')
+          i.icon-social-twitter(title='Twitter')

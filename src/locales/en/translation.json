@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "welcome": "Welcome",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "fullname": "Fullname",
+    "userName": "Username",
+    "createAccount": "Create Account",
+    "signUpWithSocialMedia": "Sign up with social media"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese"
+  }
+}
