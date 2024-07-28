@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .auth-form
+    include ../partials/flash-messages
+    form(method='POST' action='login')
+      .form-icon
+        span
+          i.icon.icon-user
+      .form-group
+        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email') value=inputData ? inputData.email : '')
+      .form-group
+        input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password') value=inputData ? inputData.password : '')
+      .form-group
+        button.btn.btn-block.create-account(type='submit')= t('auth.login')
+      if errors
+        ul
+          for error in errors
+              li.li.text-danger!= error.msg
+    .social-media
+      h5= t('auth.signUpWithSocialMedia')
+      .social-icons
+        a(href='#')
+          i.icon-social-facebook(title='Facebook')
+        a(href='#')
+          i.icon-social-google(title='Google')
+        a(href='#')
+          i.icon-social-twitter(title='Twitter')

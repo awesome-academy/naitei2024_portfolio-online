@@ -7,3 +7,6 @@ export enum RegisterError {
   EMAILEXIST = 'emailExist',
   USERNAMEEXIST = 'usernameExist'
 }
+export enum LoginError {
+  EMAILNOTEXISTORPASSWORDINCORRECT = 'emailNotExistOrPasswordIncorrect'
+}
