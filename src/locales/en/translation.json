@@ -2,6 +2,7 @@
   "auth": {
     "welcome": "Welcome",
     "register": "Register",
+    "login": "Login",
     "email": "Email",
     "password": "Password",
     "fullname": "Fullname",

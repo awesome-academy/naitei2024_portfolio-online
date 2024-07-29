@@ -2,6 +2,7 @@
   "auth": {
     "welcome": "Chào mừng",
     "register": "Đăng ký",
+    "login": "Đăng nhập",
     "email": "Email",
     "password": "Mật khẩu",
     "fullname": "Họ tên",

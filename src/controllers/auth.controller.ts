@@ -33,3 +33,6 @@ export const registerPost = [
     }
   })
 ]
+export const showLoginForm = (req: Request, res: Response) => {
+  res.render('auth/login')
+}
