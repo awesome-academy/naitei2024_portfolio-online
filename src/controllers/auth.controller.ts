@@ -36,3 +36,31 @@ export const registerPost = [
 export const showLoginForm = (req: Request, res: Response) => {
   res.render('auth/login')
 }
+export const loginPost = [
+  body('email').isEmail().withMessage(translate('validation.email')).normalizeEmail(),
+  body('password').isLength({ min: 6 }).withMessage(translate('validation.password')).trim().escape(),
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req)
+    console.log(errors)
+    if (!errors.isEmpty()) {
+      res.render('auth/login', {
+        errors: errors.array().map((error) => ({
+          ...error,
+          msg: req.t(error.msg)
+        }))
+      })
+      return
+    }
+    const { email, password } = req.body
+    const user = await authService.login(email, password)
+    console.log(user)
+    if (!user) {
+      res.render('auth/login', {
+        errors: [{ msg: req.t('status.loginFail') }]
+      })
+      return
+    }
+    req.flash('success', req.t('status.loginSuccess'))
+    res.redirect('/')
+  })
+]

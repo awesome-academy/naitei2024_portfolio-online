@@ -1,6 +1,6 @@
 import { AppDataSource } from '~/config/data-source'
 import User from '~/entity/user.entity'
-import { hashPassword } from '~/utils/cryto'
+import { comparePassword, hashPassword } from '~/utils/cryto'
 
 class AuthService {
   private userRepository = AppDataSource.getRepository(User)
@@ -12,7 +12,7 @@ class AuthService {
     // kiểm tra email có tồn tại chưa
     const userExist = await this.findUserByEmail(email)
     if (userExist) {
-      throw new Error('Email is already in use')
+      throw new Error('Email đã tồn tại')
     }
     const user = new User()
     user.fullname = fullname
@@ -21,6 +21,17 @@ class AuthService {
     user.password = hashPassword(password)
     user.username = username
     return this.userRepository.save(user)
+  }
+  async login(email: string, password: string): Promise<User | null> {
+    const user = await this.userRepository.findOne({ where: { email } })
+    console.log(user)
+    if (!user) {
+      return null
+    }
+    if (!comparePassword(password, user.password)) {
+      return null
+    }
+    return user
   }
 }
 const authService = new AuthService()

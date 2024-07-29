@@ -2,12 +2,13 @@ extends ../layout
 
 block content
   .auth-form
+    include ../partials/flash-messages
     form(method='POST' action='/login')
       .form-icon
         span
           i.icon.icon-user
       .form-group
-        input.form-control.item(type='text' name='username' id='username' placeholder=t('auth.userName'))
+        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email'))
       .form-group
         input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password'))
       .form-group
