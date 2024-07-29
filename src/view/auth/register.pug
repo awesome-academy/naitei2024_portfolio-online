@@ -2,6 +2,7 @@ extends ../layout
 
 block content
   .auth-form
+    include ../partials/flash-messages
     form(method='POST' action='/register')
       .form-icon
         span

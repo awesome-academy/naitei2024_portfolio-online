@@ -12,7 +12,6 @@ export const registerPost = [
   body('password').isLength({ min: 6 }).withMessage(translate('validation.password')).trim().escape(),
   body('fullname').isLength({ min: 6 }).withMessage(translate('validation.fullname')).trim().escape(),
   body('username').isLength({ min: 6 }).withMessage(translate('validation.userName')).trim().escape(),
-
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     console.log(req.body)
     const errors = validationResult(req)
@@ -23,11 +22,16 @@ export const registerPost = [
           msg: req.t(error.msg)
         }))
       })
-      console.log(errors)
       return
     } else {
       const { fullname, password, email, username } = req.body
       const user = await authService.register(fullname, password, email, username)
+      if (!user) {
+        console.log('Email exist')
+        req.flash('error', req.t('validation.emailExist'))
+        res.redirect('/register')
+        return
+      }
       req.flash('success', req.t('auth.registerSuccess'))
       res.redirect('/login')
     }
