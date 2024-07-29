@@ -1,0 +1,34 @@
+{
+  "auth": {
+    "welcome": "Welcome",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "fullname": "Fullname",
+    "userName": "Username",
+    "createAccount": "Create Account",
+    "signUpWithSocialMedia": "Sign up with social media"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "min": "This field must have at least {min} characters",
+    "max": "This field must have at most {max} characters",
+    "confirmPassword": "Password does not match",
+    "userName": "Invalid username",
+    "password": "Password must have at least 6 characters",
+    "fullname": "Invalid fullname",
+    "emailExist": "Email already exists",
+    "userNameExist": "Username already exists"
+  },
+  "status":{
+    "loginSuccess": "Login successfully",
+    "loginFail": "Login failed",
+    "registerSuccess": "Register successfully",
+    "registerFail": "Register failed"
+  }
+}

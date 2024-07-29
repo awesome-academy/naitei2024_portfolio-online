@@ -2,33 +2,33 @@ import { NextFunction, Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
 import { body, validationResult } from 'express-validator'
 import authService from '~/services/auth.service'
+import { translate } from '~/utils/translateI18n'
 
 export const showRegisterForm = (req: Request, res: Response) => {
   res.render('auth/register')
 }
 export const registerPost = [
-  body('email').isEmail().withMessage('Email is required').normalizeEmail(),
-  body('password').isLength({ min: 6 }).withMessage('Password is required').trim().escape(),
-  body('fullname').isLength({ min: 6 }).withMessage('Fullname is required').trim().escape(),
-  body('phoneNumber').isLength({ min: 10 }).withMessage('Phone number is required').trim().escape(),
+  body('email').isEmail().withMessage(translate('validation.email')).normalizeEmail(),
+  body('password').isLength({ min: 6 }).withMessage(translate('validation.password')).trim().escape(),
+  body('fullname').isLength({ min: 6 }).withMessage(translate('validation.fullname')).trim().escape(),
+  body('username').isLength({ min: 6 }).withMessage(translate('validation.userName')).trim().escape(),
 
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     console.log(req.body)
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       res.render('auth/register', {
-        title: 'Register',
         errors: errors.array().map((error) => ({
           ...error,
-          msg: error.msg
+          msg: req.t(error.msg)
         }))
       })
-      console.log(errors.array())
+      console.log(errors)
       return
     } else {
-      const { fullname, password, email, phoneNumber } = req.body
-      const user = await authService.register(fullname, password, email, phoneNumber)
-      req.flash('success', 'Register successfully')
+      const { fullname, password, email, username } = req.body
+      const user = await authService.register(fullname, password, email, username)
+      req.flash('success', req.t('auth.registerSuccess'))
       res.redirect('/login')
     }
   })

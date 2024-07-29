@@ -1,39 +1,32 @@
 extends ../layout
 
 block content
-   <div class="auth-form">
-        <form method='POST' action="/register">
-            if errors
-              ul
-                for error in errors
-                  <div class="alert alert-danger" role="alert">
-                    li.text-danger.li!= error.msg
-                  </div>
-            <div class="form-icon">
-                <span><i class="icon icon-user"></i></span>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="fullname" id="fullName" placeholder="Fullname">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" name="password" id="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="email" id="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
-            </div>
-            <div class="form-group">
-                <button type='submit' class="btn btn-block create-account">Create Account</button>
-            </div>
-        </form>
-        <div class="social-media">
-            <h5>Sign up with social media</h5>
-            <div class="social-icons">
-                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-                <a href="#"><i class="icon-social-google" title="Google"></i></a>
-                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
-            </div>
-        </div>
-   </div>
+  .auth-form
+    form(method='POST' action='/register')
+      .form-icon
+        span
+          i.icon.icon-user
+      .form-group
+        input.form-control.item(type='text' name='fullname' id='fullName' placeholder=t('auth.fullname'))
+      .form-group
+        input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password'))
+      .form-group
+        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email'))
+      .form-group
+        input.form-control.item(type='text' name='username' id='username' placeholder=t('auth.userName'))
+      .form-group
+        button.btn.btn-block.create-account(type='submit')= t('auth.createAccount')
+      if errors
+        ul
+          for error in errors
+              li.li.text-danger!= error.msg
+    .social-media
+      h5= t('auth.signUpWithSocialMedia')
+      .social-icons
+        a(href='#')
+          i.icon-social-facebook(title='Facebook')
+        a(href='#')
+          i.icon-social-google(title='Google')
+        a(href='#')
+          i.icon-social-twitter(title='Twitter')
+
