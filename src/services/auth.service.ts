@@ -8,18 +8,18 @@ class AuthService {
     const result = await this.userRepository.findOne({ where: { email } })
     return Boolean(result)
   }
-  async register(username: string, fullname: string, email: string, password: string): Promise<User> {
+  async register(fullname: string, password: string, email: string, phoneNumber: string): Promise<User> {
     // kiểm tra email có tồn tại chưa
     const userExist = await this.findUserByEmail(email)
     if (userExist) {
       throw new Error('Email is already in use')
     }
     const user = new User()
-    user.username = username
     user.fullname = fullname
     user.email = email
     user.role = 'user'
     user.password = hashPassword(password)
+    user.phoneNumber = phoneNumber
     return this.userRepository.save(user)
   }
 }
