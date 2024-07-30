@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express'
+import { showAbout } from '~/controllers/about.controller'
 import { loginPost, registerPost, showLoginForm, showRegisterForm } from '~/controllers/auth.controller'
 const router = express.Router()
 
@@ -10,4 +11,5 @@ router.get('/register', showRegisterForm)
 router.post('/register', registerPost)
 router.get('/login', showLoginForm)
 router.post('/login', loginPost)
+router.get('/about', showAbout)
 export default router

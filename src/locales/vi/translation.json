@@ -1,4 +1,7 @@
 {
+  "home":{
+    "titleAbout": "Về tôi"
+  },
   "auth": {
     "welcome": "Chào mừng",
     "register": "Đăng ký",
@@ -31,5 +34,12 @@
     "loginFail": "Đăng nhập thất bại",
     "registerSuccess": "Đăng ký thành công",
     "registerFail": "Đăng ký thất bại"
+  },
+  "socials": {
+    "facebook": "Facebook",
+    "google": "Google",
+    "twitter": "Twitter",
+    "github": "Github",
+    "codepen": "Codepen"
   }
 }

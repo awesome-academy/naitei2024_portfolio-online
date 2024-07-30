@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+  //- Locomotive Scroll Container
+  div(data-scroll-container)
+
+    //- Main Section
+    section.container.py-3
+      //- Page Content Goes Here
+      h1.display-3.mb-5(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('home.titleAbout')}
+
+      .row.g-8
+        //- Profile Image
+        .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")
+          picture
+            img.img-fluid(src=`${webRoot}/assets/images/avatar.jpg`)
+        //- / Profile Image
+
+        //- Bio & CV Link
+        .col-12.col-md-7
+          .row.g-5.g-xl-8
+            .col-12.col-xl-7(data-scroll data-scroll-speed="4" data-scroll-position="top")
+              p.lead I'm Jenny Smith, a freelance web developer and designer based in London, United Kingdom.
+              p I'm passionate about creating engaging and easy-to-navigate layouts. I love the look of clean lines, sharp contrasts in color schemes or bold graphic assets paired with sophisticated illustrations.
+              p As an Ecommerce developer my work is focused on web design; abstract forms make up most projects these days because they're so popular among consumers who want more control over their shopping experience than ever before.
+            .col-12.col-xl-5(data-scroll data-scroll-speed="2" data-scroll-position="top")
+              a.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href="#")
+                i.ri-file-download-line.ri-lg.me-2
+                | Download My CV
+              h5.fw-medium.mt-6.mb-3.mt-5 Find Me Online
+              ul.list-unstyled
+                li.d-flex.align-items-center.mb-2
+                  i.ri-github-line.me-3.ri-lg
+                  a.link-body(href="#") #{t('socials.github')}
+                li.d-flex.align-items-center.mb-2
+                  i.ri-facebook-line.me-3.ri-lg
+                  a.link-body(href="#") #{t('socials.facebook')}
+                li.d-flex.align-items-center.mb-2
+                  i.ri-twitter-line.me-3.ri-lg
+                  a.link-body(href="#") #{t('socials.twitter')}
+                li.d-flex.align-items-center.mb-2
+                  i.ri-codepen-line.me-3.ri-lg
+                  a.link-body(href="#") #{t('socials.codepen')}
+
+      include ../widgets/experience
+      include ../widgets/skills
+
+

@@ -1,0 +1,15 @@
+include ../partials/subtitle
+
+.section(data-scroll)
+  +subtitle('Experience')
+  hr
+  each entry in experience.entries
+    //- Single Experience
+    .row.gx-2.mb-5.fade-in-up(data-scroll data-scroll-position="bottom")
+      .col-12.col-lg-4
+        p.fw-bolder.mb-1= entry.company
+        span.text-muted.small= `(${entry.years})`
+      .col-12.col-lg-8
+        p.fw-bolder= entry.title
+        p.text-muted.fw-light.fs-6= entry.description
+        a.link-body(href="#")= entry['url-title']

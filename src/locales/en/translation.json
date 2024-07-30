@@ -1,4 +1,7 @@
 {
+  "home": {
+    "titleAbout": "About Me"
+  },
   "auth": {
     "welcome": "Welcome",
     "register": "Register",
@@ -31,5 +34,12 @@
     "loginFail": "Login failed",
     "registerSuccess": "Register successfully",
     "registerFail": "Register failed"
+  },
+  "socials": {
+    "facebook": "Facebook",
+    "google": "Google",
+    "twitter": "Twitter",
+    "github": "Github",
+    "codepen": "Codepen"
   }
 }
