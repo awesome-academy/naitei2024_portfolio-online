@@ -11,7 +11,8 @@
     "fullname": "Fullname",
     "userName": "Username",
     "createAccount": "Create Account",
-    "signUpWithSocialMedia": "Sign up with social media"
+    "signUpWithSocialMedia": "Sign up with social media",
+    "userNotFound": "User not found"
   },
   "language": {
     "en": "English",

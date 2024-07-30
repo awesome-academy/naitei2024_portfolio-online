@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler'
 import { body, validationResult } from 'express-validator'
 import authService from '~/services/auth.service'
 import { translate } from '~/utils/translateI18n'
+import 'express-session'
 
 export const showRegisterForm = (req: Request, res: Response) => {
   res.render('auth/register')
@@ -55,14 +56,18 @@ export const loginPost = [
     }
     const { email, password } = req.body
     const user = await authService.login(email, password)
-    console.log(user)
     if (!user) {
       res.render('auth/login', {
         errors: [{ msg: req.t('status.loginFail') }]
       })
       return
     }
+    req.session.user = {
+      id: user.id,
+      email: user.email,
+      fullname: user.fullname
+    }
     req.flash('success', req.t('status.loginSuccess'))
-    res.redirect('/')
+    res.redirect('/about')
   })
 ]

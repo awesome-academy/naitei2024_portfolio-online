@@ -11,7 +11,8 @@
     "fullname": "Họ tên",
     "userName": "Tên người dùng",
     "createAccount": "Tạo tài khoản",
-    "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội"
+    "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội",
+    "userNotFound": "Người dùng không tồn tại"
   },
   "language": {
     "en": "Tiếng Anh",
