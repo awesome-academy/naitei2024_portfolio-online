@@ -10,7 +10,6 @@ class AuthService {
   }
   async register(fullname: string, password: string, email: string, username: string): Promise<User | null> {
     const userExist = await this.findUserByEmail(email)
-    console.log(userExist)
     if (userExist) {
       return null
     }
@@ -24,7 +23,6 @@ class AuthService {
   }
   async login(email: string, password: string): Promise<User | null> {
     const user = await this.userRepository.findOne({ where: { email } })
-    console.log(user)
     if (!user) {
       return null
     }
