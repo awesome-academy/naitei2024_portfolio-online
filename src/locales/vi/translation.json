@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "welcome": "Chào mừng",
+    "register": "Đăng ký",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "fullname": "Họ tên",
+    "userName": "Tên người dùng",
+    "createAccount": "Tạo tài khoản",
+    "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội"
+  },
+  "language": {
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt"
+  }
+}

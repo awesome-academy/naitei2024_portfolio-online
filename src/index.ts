@@ -10,27 +10,43 @@ import 'reflect-metadata'
 import { AppDataSource } from './config/data-source'
 
 import * as dotenv from 'dotenv'
+import i18next from 'i18next'
+import Backend from 'i18next-fs-backend'
+import middleware from 'i18next-http-middleware'
 dotenv.config()
-
-// establish database connection
-AppDataSource.initialize()
-  .then(() => {
-    console.log('Data Source has been initialized!')
-  })
-  .catch((err: Error | unknown) => {
-    console.error('Error during Data Source initialization:', err)
-  })
 
 // create and setup express app
 const app = express()
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
-
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+i18next
+  .use(Backend)
+  .use(middleware.LanguageDetector)
+  .init({
+    fallbackLng: 'vi',
+    preload: ['en', 'vi'],
+    supportedLngs: ['en', 'vi'],
+    backend: {
+      loadPath: __dirname + '/locales/{{lng}}/{{ns}}.json',
+      addPath: __dirname + '/locales/{{lng}}/{{ns}}.missing.json'
+    },
+    detection: {
+      order: ['querystring', 'cookie'],
+      caches: ['cookie'],
+      lookupQuerystring: 'lang', // ?lng=en or ?lng=vi để chuyển ngôn ngữ trên url
+      lookupCookie: 'lang', // chuyển ngôn ngữ bằng cách set cookie
+      ignoreCase: true,
+      cookieSecure: false
+    }
+  })
+
+app.use(middleware.handle(i18next))
+
+// view engine setup
+app.set('views', path.join(__dirname, 'view'))
+app.set('view engine', 'pug')
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -54,4 +70,12 @@ app.use(function (err: HttpError, req: Request, res: Response, next: NextFunctio
 app.listen(3000, () => {
   console.log('listening on port 3000')
 })
+// establish database connection
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!')
+  })
+  .catch((err: Error | unknown) => {
+    console.error('Error during Data Source initialization:', err)
+  })
 export default app
