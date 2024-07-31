@@ -1,0 +1,9 @@
+if messages && messages.error
+  .alert.alert-danger
+    = messages.error
+if messages && messages.success
+  .alert.alert-success
+    = messages.success
+if messages && messages.info
+  .alert.alert-info
+    = messages.info

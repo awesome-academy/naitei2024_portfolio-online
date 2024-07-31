@@ -3,3 +3,7 @@ export enum Role {
   USER = 'user',
   GUEST = 'guest'
 }
+export enum RegisterError {
+  EMAILEXIST = 'emailExist',
+  USERNAMEEXIST = 'usernameExist'
+}
