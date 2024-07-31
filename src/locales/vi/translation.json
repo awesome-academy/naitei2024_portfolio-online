@@ -13,6 +13,15 @@
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"
   },
+  "home": {
+    "portfolio": "HỒ SƠ",
+    "about": "Thông tin",
+    "blogs": "Blogs",
+    "projects": "Dự án",
+    "login": "Đăng nhập",
+    "logout": "Đăng ký",
+    "setting": "Cài đặt"
+  },
   "validation": {
     "required": "Trường này không được để trống",
     "email": "Email không hợp lệ",

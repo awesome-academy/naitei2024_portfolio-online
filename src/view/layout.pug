@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang='en')
   head
     title= title
     meta(charset='utf-8')
@@ -10,4 +10,24 @@ html
     link(rel='stylesheet' , href='/stylesheets/layout.css' )
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='/') 
+        strong #{t('home.portfolio')}
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse(id='navbarSupportedContent')
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/') #{t('home.about')}
+          li.nav-item.active
+            a.nav-link(href='/') #{t('home.blogs')}
+          li.nav-item.active
+            a.nav-link(href='/') #{t('home.projects')}
+        ul.navbar-nav.float-right
+          li.nav-item
+            a.nav-link(href='/') #{t('home.login')}
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(id='navbarDropdownMenuLink', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Accounts
+            .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+              a.dropdown-item(href='#') #{t('home.setting')}
     block content

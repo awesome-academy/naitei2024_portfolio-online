@@ -82,3 +82,7 @@
 .li {
   list-style-type: none;
 }
+
+.home-image .image-container {
+  max-width: 80%;
+}

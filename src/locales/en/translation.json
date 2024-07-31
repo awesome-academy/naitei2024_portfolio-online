@@ -13,6 +13,15 @@
     "en": "English",
     "vi": "Vietnamese"
   },
+  "home": {
+    "portfolio": "PORTFOLIO",
+    "about": "About",
+    "blogs": "Blogs",
+    "projects": "Projects",
+    "login": "Login",
+    "logout": "Logout",
+    "setting": "Settings"
+  },
   "validation": {
     "required": "This field is required",
     "email": "Invalid email",
