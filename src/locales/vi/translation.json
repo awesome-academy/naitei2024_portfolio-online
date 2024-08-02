@@ -12,5 +12,23 @@
   "language": {
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"
+  },
+  "validation": {
+    "required": "Trường này không được để trống",
+    "email": "Email không hợp lệ",
+    "min": "Trường này phải có ít nhất {min} ký tự",
+    "max": "Trường này phải có nhiều nhất {max} ký tự",
+    "confirmPassword": "Mật khẩu không khớp",
+    "userName": "Tên người dùng không hợp lệ",
+    "password": "Mật khẩu phải có ít nhất 6 ký tự",
+    "fullname": "Họ tên không hợp lệ",
+    "emailExist": "Email đã tồn tại",
+    "userNameExist": "Tên người dùng đã tồn tại"
+  },
+  "status":{
+    "loginSuccess": "Đăng nhập thành công",
+    "loginFail": "Đăng nhập thất bại",
+    "registerSuccess": "Đăng ký thành công",
+    "registerFail": "Đăng ký thất bại"
   }
 }

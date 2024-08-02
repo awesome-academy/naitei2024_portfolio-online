@@ -2,25 +2,25 @@ extends ../layout
 
 block content
   .auth-form
-    form(method='POST' action='/register')
-      if errors
-        ul
-          for error in errors
-            .alert.alert-danger(role='alert')
-              li.text-danger!= error.msg
+    include ../partials/flash-messages
+    form(method='POST' action='register')
       .form-icon
         span
           i.icon.icon-user
       .form-group
-        input.form-control.item(type='text' name='fullname' id='fullName' placeholder=t('auth.fullname'))
+        input.form-control.item(type='text' name='fullname' id='fullName' placeholder=t('auth.fullname') value=inputData ? inputData.fullname : '') 
       .form-group
-        input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password'))
+        input.form-control.item(type='password' name='password' id='password' placeholder=t('auth.password') value=inputData ? inputData.password : '')
       .form-group
-        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email'))
+        input.form-control.item(type='text' name='email' id='email' placeholder=t('auth.email') value=inputData ? inputData.email : '')
       .form-group
-        input.form-control.item(type='text' name='username' id='userName' placeholder=t('auth.userName'))
+        input.form-control.item(type='text' name='username' id='username' placeholder=t('auth.userName') value=inputData ? inputData.username : '')
       .form-group
         button.btn.btn-block.create-account(type='submit')= t('auth.createAccount')
+      if errors
+        ul
+          for error in errors
+              li.li.text-danger!= error.msg
     .social-media
       h5= t('auth.signUpWithSocialMedia')
       .social-icons

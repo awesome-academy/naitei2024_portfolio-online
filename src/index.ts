@@ -3,20 +3,23 @@ import express, { Request, Response, NextFunction } from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-
+import session from 'express-session'
+import flash from 'connect-flash'
 import indexRouter from './router/index'
-
 import 'reflect-metadata'
 import { AppDataSource } from './config/data-source'
-
 import * as dotenv from 'dotenv'
 import i18next from 'i18next'
 import Backend from 'i18next-fs-backend'
 import middleware from 'i18next-http-middleware'
+
 dotenv.config()
 
-// create and setup express app
+const secret = process.env.SESSION_SECRET || 'secret'
+
+// Tạo và thiết lập ứng dụng express
 const app = express()
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -29,13 +32,13 @@ i18next
     preload: ['en', 'vi'],
     supportedLngs: ['en', 'vi'],
     backend: {
-      loadPath: __dirname + '/locales/{{lng}}/{{ns}}.json',
-      addPath: __dirname + '/locales/{{lng}}/{{ns}}.missing.json'
+      loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json'),
+      addPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.missing.json')
     },
     detection: {
       order: ['querystring', 'cookie'],
       caches: ['cookie'],
-      lookupQuerystring: 'lang', // ?lng=en or ?lng=vi để chuyển ngôn ngữ trên url
+      lookupQuerystring: 'lang', // ?lng=en hoặc ?lng=vi để chuyển ngôn ngữ trên URL
       lookupCookie: 'lang', // chuyển ngôn ngữ bằng cách set cookie
       ignoreCase: true,
       cookieSecure: false
@@ -44,33 +47,53 @@ i18next
 
 app.use(middleware.handle(i18next))
 
-// view engine setup
+// Thiết lập view engine
 app.set('views', path.join(__dirname, 'view'))
 app.set('view engine', 'pug')
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Cấu hình session
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: secret
+  })
+)
+
+// Cấu hình connect-flash
+app.use(flash())
+
+// Middleware để đặt các biến flash vào res.locals
+app.use((req, res, next) => {
+  res.locals.messages = req.flash()
+  next()
+})
+
+// Thiết lập router
 app.use('/', indexRouter)
 
-// catch 404 and forward to error handler
+// Bắt lỗi 404 và chuyển tiếp đến bộ xử lý lỗi
 app.use(function (req: Request, res: Response, next: NextFunction) {
   next(createError(404))
 })
 
-// error handler
+// Bộ xử lý lỗi
 app.use(function (err: HttpError, req: Request, res: Response, next: NextFunction) {
-  // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
   res.status(err.status || 500)
   res.render('error')
 })
+
+// Bắt đầu máy chủ
 app.listen(3000, () => {
   console.log('listening on port 3000')
 })
-// establish database connection
+
+// Kết nối cơ sở dữ liệu
 AppDataSource.initialize()
   .then(() => {
     console.log('Data Source has been initialized!')

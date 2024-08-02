@@ -12,5 +12,23 @@
   "language": {
     "en": "English",
     "vi": "Vietnamese"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "min": "This field must have at least {min} characters",
+    "max": "This field must have at most {max} characters",
+    "confirmPassword": "Password does not match",
+    "userName": "username must have at least 6 characters",
+    "password": "Password must have at least 6 characters",
+    "fullname": "Invalid fullname",
+    "emailExist": "Email already exists",
+    "userNameExist": "Username already exists"
+  },
+  "status":{
+    "loginSuccess": "Login successfully",
+    "loginFail": "Login failed",
+    "registerSuccess": "Register successfully",
+    "registerFail": "Register failed"
   }
 }
