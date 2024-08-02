@@ -1,8 +1,10 @@
 import { AppDataSource } from '~/config/data-source'
+import { LoginDto } from '~/dtos/Login.dto'
 import { RegisterDto } from '~/dtos/Register.dto'
 import User from '~/entity/user.entity'
 import { RegisterError, Role } from '~/enum/role'
-import { hashPassword } from '~/utils/cryto'
+import { LoginError } from '~/enum/role'
+import { comparePassword, hashPassword } from '~/utils/cryto'
 
 class AuthService {
   private userRepository = AppDataSource.getRepository(User)
@@ -38,6 +40,14 @@ class AuthService {
     await this.userRepository.save(user)
 
     return { success: true }
+  }
+  async login(loginDto: LoginDto): Promise<{ user: User | null; error: string | null }> {
+    const { email, password } = loginDto
+    const user = await this.userRepository.findOne({ where: { email } })
+    if (!user || !comparePassword(password, user.password)) {
+      return { user: null, error: LoginError.EMAILNOTEXISTORPASSWORDINCORRECT }
+    }
+    return { user, error: null }
   }
 }
 const authService = new AuthService()

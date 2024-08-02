@@ -2,6 +2,7 @@
   "auth": {
     "welcome": "Welcome",
     "register": "Register",
+    "login": "Login",
     "email": "Email",
     "password": "Password",
     "fullname": "Fullname",
@@ -32,7 +33,8 @@
     "password": "Password must have at least 6 characters",
     "fullname": "Invalid fullname",
     "emailExist": "Email already exists",
-    "userNameExist": "Username already exists"
+    "userNameExist": "Username already exists",
+    "invalidEmailPassword": "Invalid email or password"
   },
   "status":{
     "loginSuccess": "Login successfully",
