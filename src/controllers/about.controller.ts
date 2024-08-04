@@ -2,48 +2,49 @@ import { NextFunction, Request, Response } from 'express'
 import experienceService from '~/services/experience.service'
 import skillService from '~/services/skill.service'
 import userService from '~/services/user.service'
+import asyncHandler from 'express-async-handler'
 
-export const showAbout = async (req: Request, res: Response) => {
-  // Kiểm tra xem user có tồn tại trong session không
-  if (!req.session.user?.id) {
-    return res.redirect('/login')
+export const showAbout = asyncHandler(async (req: Request, res: Response) => {
+  // Check if the user is authenticated
+  const userId = req.session.user?.id
+  if (!userId) {
+    req.flash('error', req.t('auth.userNotFound'))
+    return res.redirect('auth/login')
   }
-  const userId = Number(req.session.user.id)
-  try {
-    const user = await userService.findUserById(userId)
 
+  try {
+    const user = await userService.findUserById(Number(userId))
     if (!user) {
       req.flash('error', req.t('auth.userNotFound'))
-      return res.redirect('/login')
+      return res.redirect('auth/login')
     }
+
     const [experienceEntries, skillEntries] = await Promise.all([
       experienceService.getExperiencesByUserId(user.id),
       skillService.getSkillsByUserId(user.id)
     ])
-    // Kiểm tra nếu không có dữ liệu experience và skill
-    if (experienceEntries.length === 0 || skillEntries.length === 0) {
-      return res.redirect('/create')
+    if (user.title === null || user.description === null) {
+      return res.redirect('about/create')
     }
 
     const experience = {
       entries: experienceEntries.map((entry) => ({
         company: entry.company,
-        years: `${entry.startDate.getFullYear()}-${entry.endDate ? entry.endDate.getFullYear() : 'Present'}`,
+        years: `${entry.startDate.getFullYear()}-${('0' + (entry.startDate.getMonth() + 1)).slice(-2)}-${('0' + entry.startDate.getDate()).slice(-2)} to ${entry.endDate ? `${entry.endDate.getFullYear()}-${('0' + (entry.endDate.getMonth() + 1)).slice(-2)}-${('0' + entry.endDate.getDate()).slice(-2)}` : 'Present'}`,
         title: entry.title,
         description: entry.description
       }))
     }
-
     const skills = {
       entries: skillEntries.map((entry) => ({
         skill: entry.name,
         percent: entry.proficiency
       }))
     }
-
-    res.render('about/', { experience, skills })
+    const socialLink = user.socialLinks[0]
+    res.render('about', { experience, skills, user, socialLink })
   } catch (error) {
-    console.error('Error in showAbout:', error)
-    res.status(500).render('error', { message: 'An error occurred while processing your request' })
+    req.flash('error', req.t('about.serverError'))
+    return res.redirect('/')
   }
-}
+})
