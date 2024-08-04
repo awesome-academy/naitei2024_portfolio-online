@@ -23,26 +23,29 @@ export const showAbout = asyncHandler(async (req: Request, res: Response) => {
       experienceService.getExperiencesByUserId(user.id),
       skillService.getSkillsByUserId(user.id)
     ])
+
     if (user.title === null || user.description === null) {
+      req.flash('info', req.t('about.noDataFound'))
       return res.redirect('about/create')
     }
 
     const experience = {
       entries: experienceEntries.map((entry) => ({
         company: entry.company,
-        years: `${entry.startDate.getFullYear()}-${('0' + (entry.startDate.getMonth() + 1)).slice(-2)}-${('0' + entry.startDate.getDate()).slice(-2)} to ${entry.endDate ? `${entry.endDate.getFullYear()}-${('0' + (entry.endDate.getMonth() + 1)).slice(-2)}-${('0' + entry.endDate.getDate()).slice(-2)}` : 'Present'}`,
+        years: `${entry.startDate.getFullYear()}-${entry.endDate ? entry.endDate.getFullYear() : 'Present'}`,
         title: entry.title,
         description: entry.description
       }))
     }
+
     const skills = {
       entries: skillEntries.map((entry) => ({
         skill: entry.name,
         percent: entry.proficiency
       }))
     }
-    const socialLink = user.socialLinks[0]
-    res.render('about', { experience, skills, user, socialLink })
+
+    res.render('about', { experience, skills, user })
   } catch (error) {
     req.flash('error', req.t('about.serverError'))
     return res.redirect('/')
