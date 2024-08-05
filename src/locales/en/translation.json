@@ -88,6 +88,30 @@
     "update": "Update",
     "delete": "Delete",
     "edit": "Edit",
-    "add": "Add"
+    "add": "Add",
+    "create": "Create"
+  },
+  "blog":{
+    "title": "Blogs",
+    "clickToReadMore": "Click to read this article...",
+    "noBlogFound": "No blog found",
+    "UpdateTitle": "Update Blog",
+    "blogEntry": "Blog Entry",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "imageLabel": "Image",
+    "contentLabel": "Content",
+    "additionalImagesSection": "Additional Images",
+    "additionalImageLabel": "Additional Image",
+    "addAdditionalImage": "Add Additional Image",
+    "addNewBlog": "Add New Blog",
+    "slogan": "Exploring the world, one story at a time. Discover the extraordinary in the ordinary.",
+    "updateBlogEntry": "Update Blog Entry",
+    "newBlogEntry": "New Blog Entry",
+    "deleteConfirm": "Are you sure you want to delete this blog?",
+    "deleteTitle": "Delete Blog",
+    "notFound": "Blog not found",
+    "createTitle": "Create Blog",
+    "updateTitle": "Update Blog"
   }
 }

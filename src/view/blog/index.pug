@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  section(data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="py-5" id="blog")
+    .container
+      .text-center.py-5
+        h2.fw-bolder #{t('blog.title')}
+        p.fs-5 #{t('blog.slogan')}
+
+      .row
+        if blogs && blogs.length > 0
+          each blog in blogs
+            .col-lg-4.col-md-6.mb-4
+              .card
+                img.card-img-top(src=blog.imageUrl)
+                .card-body
+                  h5.card-title.text-center.py-2= blog.title
+                  p= blog.description
+                  a.btn.btn-light.d-flex.justify-content-center(href=`/blog/${blog.id}`) #{t('blog.clickToReadMore')}
+        else
+          .col
+            p.text-center #{t('blog.noBlogFound')}
+      a.btn.btn-success.float-right(href="/blog/create") #{t('blog.addNewBlog')}

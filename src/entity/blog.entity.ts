@@ -24,8 +24,14 @@ export default class Blog extends BaseEntity {
   @Column('text')
   description: string
 
+  @Column('text')
+  content: string
+
   @Column({ nullable: true })
   imageUrl: string
+
+  @Column('simple-array', { nullable: true })
+  additionalImages: string[]
 
   @CreateDateColumn()
   createdAt: Date

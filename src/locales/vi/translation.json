@@ -18,7 +18,7 @@
   "home": {
     "portfolio": "HỒ SƠ",
     "about": "Thông tin",
-    "blogs": "Blogs",
+    "blogs": "Bài viết",
     "projects": "Dự án",
     "login": "Đăng nhập",
     "logout": "Đăng ký",
@@ -89,10 +89,34 @@
     "update": "Cập nhật",
     "delete": "Xóa",
     "add": "Thêm",
-    "edit": "Chỉnh sửa"
+    "edit": "Chỉnh sửa",
+    "create": "Tạo mới"
   },
   "error": {
     "uploadFailed": "Tải lên thất bại"
+  },
+  "blog":{
+    "title": "Bài Viết",
+    "clickToReadMore": "Click để đọc thêm",
+    "noBlogFound": "Không tìm thấy bài viết",
+    "UpdateTitle": "Cập nhật bài viết",
+    "blogEntry": "Bài viết",
+    "titleLabel": "Tiêu đề",
+    "descriptionLabel": "Mô tả",
+    "imageLabel": "Ảnh",
+    "contentLabel": "Nội dung",
+    "additionalImagesSection":"Ảnh bổ sung", 
+    "additionalImageLabel": "Ảnh bổ sung",
+    "addAdditionalImage": "Thêm ảnh bổ sung",
+    "addNewBlog": "Thêm bài viết",
+    "slogan":"Khám phá thế giới qua từng câu chuyện. Tìm thấy điều phi thường trong những điều bình thường",
+    "updateBlogEntry": "Cập nhật bài viết",
+    "newBlogEntry": "Bài viết mới",
+    "deleteConfirm": "Bạn có chắc chắn muốn xóa bài viết này không?",
+    "deleteTitle": "Xóa bài viết",
+    "notFound": "Không tìm thấy bài viết",
+    "createTitle": "Tạo bài viết",
+    "updateTitle": "Cập nhật bài viết"
   }
 
 }

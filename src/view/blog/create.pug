@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  div(data-scroll-container)
+    section.container.py-3
+      include ../partials/flash-messages
+      h1.display-3.mb-5(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('blog.createTitle')}
+
+      form(method="POST" action="/blog/create" enctype="multipart/form-data")
+        .blog-entry.card.mb-4
+          .card-body
+            h3.card-title #{t('blog.newBlogEntry')}
+
+            .form-group
+              label(for="title") #{t('blog.titleLabel')}
+              input(type="text" class="form-control" id="title" name="title" placeholder=t('blog.titleLabel') required)
+
+            .form-group
+              label(for="description") #{t('blog.descriptionLabel')}
+              textarea(class="form-control" id="description" name="description" rows="3" placeholder=t('blog.descriptionLabel') required)
+
+            .form-group
+              label(for="imageUrl") #{t('blog.imageLabel')}
+              input(type="file" class="form-control" id="imageUrl" name="imageUrl")
+
+            .form-group
+              label(for="content") #{t('blog.contentLabel')}
+              textarea(class="form-control" id="content" name="content" rows="10" placeholder=t('blog.contentLabel') required)
+
+            h4.mt-4 #{t('blog.additionalImagesSection')}
+            .additional-images-container
+              .form-group
+                label(for="additionalImages") #{t('blog.additionalImageLabel')}
+                input(type="file" class="form-control" id="additionalImages" name="additionalImages" multiple)
+            button.btn.btn-success.mt-2.add-additional-image(type="button" data-blog-index=index) #{t('blog.addAdditionalImage')}
+        button.btn.btn-primary.float-right.mt-3(type="submit") #{t('button.create')}
+
+
+
+  script(src="/scripts/blog-form.js")

@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  .d-flex.justify-content-end.mb-3.mr-5
+    a.btn.btn-primary.px-4.mr-2(href=`/blog/update/${blog.id}`) #{t('button.edit')}
+    button.btn.btn-danger.px-4(data-toggle="modal" data-target="#deleteModal") #{t('button.delete')}
+  .container
+    h1.text-success.text-center= blog.title
+
+    figure.figure
+      img.figure-img.img-fluid.rounded-5.d-block.ml-5.w-80(src=blog.imageUrl alt='Blog Image')
+      figcaption.figure-caption.text-center= blog.title
+
+    p.text-justify= blog.description
+
+    div
+      p.text-justify= blog.content
+
+    if blog.additionalImages.length > 0
+      .col-xl-8.col-lg-8.col-md-8.mt-4.p-4.text-center
+      .row
+        each image, index in blog.additionalImages
+          .col-sm-6.col-lg-6.mb-3.text-center
+            img.w-100.h-100.object-fit.img-fluid.rounded-5(src=image alt='Additional Image')
+
+  .modal.fade#deleteModal(tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          h5.modal-title#deleteModalLabel #{t('modal.deleteTitle')}
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
+        .modal-body
+          p #{t('blog.deleteConfirm')}
+        .modal-footer
+          button.btn.btn-secondary(type="button" data-dismiss="modal") #{t('button.cancel')}
+          a.btn.btn-danger(href=`/blog/delete/${blog.id}`) #{t('button.delete')}
+
