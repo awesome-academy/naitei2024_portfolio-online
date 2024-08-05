@@ -61,6 +61,9 @@ class ExperienceService {
     // Lưu các experiences đã cập nhật và mới
     await experienceService.saveExperiences(updatedExperiences)
   }
+  async deleteExperienceByIds(id: number, userId: number): Promise<void> {
+    await this.experienceRepository.delete({ id, userId })
+  }
 }
 const experienceService = new ExperienceService()
 export default experienceService

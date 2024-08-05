@@ -1,6 +1,5 @@
 import { AppDataSource } from '~/config/data-source'
 import Skill from '~/entity/skill.entity'
-import User from '~/entity/user.entity'
 
 class SkillService {
   private skillRepository = AppDataSource.getRepository(Skill)
@@ -49,6 +48,9 @@ class SkillService {
 
     // Lưu các skills đã cập nhật và mới
     await skillService.saveSkills(updatedSkills)
+  }
+  async deleteSkillByIds(id: number, userId: number): Promise<void> {
+    await this.skillRepository.delete({ id, userId })
   }
 }
 const skillService = new SkillService()
