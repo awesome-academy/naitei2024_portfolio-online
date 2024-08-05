@@ -1,0 +1,146 @@
+extends ../layout
+
+block content
+  //- Locomotive Scroll Container
+  div(data-scroll-container)
+    include ../partials/flash-messages
+
+    //- Main Section
+    section.container.py-3
+      h1.display-3.mb-5(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('about.titleUpdate')}
+
+      //- Form to Add/Edit About Information
+      form(method="POST" action="/about/update" enctype="multipart/form-data")
+        .form-group
+          label(for="imageUrl") #{t('about.imageProfileLabel')}
+          input(type="file" class="form-control" id="imageUrl" name="imageUrl")
+
+        .form-group
+          label(for="title") #{t('about.titleLabel')}
+          input(type="text" class="form-control" id="title" name="title" placeholder=t('about.titleLabel') value=user.title)
+
+        .form-group
+          label(for="description") #{t('about.descriptionLabel')}
+          textarea(class="form-control" id="description" name="description" rows="3" placeholder=t('about.descriptionLabel'))= user.description
+
+        .form-group
+          label(for="hobbies") #{t('about.hobbiesLabel')}
+          textarea(class="form-control" id="hobbies" name="hobbies" rows="3" placeholder=t('about.hobbiesLabel'))= user.hobbies
+
+        //- Social Links
+        h2.fw-medium.mt-4 #{t('about.socialLinks')}
+
+        - var githubUrl = ''
+        - var facebookUrl = ''
+        - var twitterUrl = ''
+
+        each socialLink in user.socialLinks
+          if socialLink.url.includes('github.com')
+            - githubUrl = socialLink.url
+          else if socialLink.url.includes('facebook.com')
+            - facebookUrl = socialLink.url
+          else if socialLink.url.includes('twitter.com')
+            - twitterUrl = socialLink.url
+
+        .form-group
+          label(for="urlGit") #{t('socials.github')}
+          input(type="url" class="form-control" id="urlGit" name="socialLinks[urlGit]" placeholder="https://github.com/yourprofile" value=githubUrl)
+
+        .form-group
+          label(for="urlFb") #{t('socials.facebook')}
+          input(type="url" class="form-control" id="urlFb" name="socialLinks[urlFb]" placeholder="https://facebook.com/yourprofile" value=facebookUrl)
+
+        .form-group
+          label(for="urlTw") #{t('socials.twitter')}
+          input(type="url" class="form-control" id="urlTw" name="socialLinks[urlTw]" placeholder="https://twitter.com/yourprofile" value=twitterUrl)
+
+        //- Experience Section
+        h2.mt-4 #{t('about.experienceSection')}
+        //- Experience Section
+        #experienceContainer
+          - var experiencesArray = experiences && experiences.length ? experiences : [{}]
+          each experience, index in experiencesArray
+            .experience-entry
+              .form-group
+                label(for=`company${index}`) #{t('about.companyLabel')}
+                input(type="text" class="form-control" id=`company${index}` name=`experience[${index}][company]` placeholder=t('about.companyLabel') value=experience.company || '')
+
+              .form-group
+                label(for=`title${index}`) #{t('about.titleExperienceLabel')}
+                input(type="text" class="form-control" id=`title${index}` name=`experience[${index}][title]` placeholder=t('about.titleExperienceLabel') value=experience.title || '')
+
+              .form-group
+                label(for=`location${index}`) #{t('about.locationLabel')}
+                input(type="text" class="form-control" id=`location${index}` name=`experience[${index}][location]` placeholder=t('about.locationLabel') value=experience.location || '')
+
+              .form-group
+                label(for=`startDate${index}`) #{t('about.startDateLabel')}
+                input(type="date" class="form-control" id=`startDate${index}` name=`experience[${index}][startDate]` value=experience.startDate || '' required)
+
+              .form-group
+                label(for=`endDate${index}`) #{t('about.endDateLabel')}
+                input(type="date" class="form-control" id=`endDate${index}` name=`experience[${index}][endDate]` value=experience.endDate || '' required)
+
+              .form-group
+                label(for=`description${index}`) #{t('about.descriptionLabel')}
+                textarea(class="form-control" id=`description${index}` name=`experience[${index}][description]` rows="3" placeholder=t('about.descriptionLabel'))= experience.description || ''
+              //- Delete button with modal trigger
+              button.btn.btn-danger.mt-2(type="button" data-toggle="modal" data-target=`#deleteModal${index}` aria-controls=`deleteModal${index}` aria-expanded="false" aria-label="Delete Experience Entry") #{t('button.delete')}
+              hr.mb-5
+
+        button.btn.btn-success.mt-2#addExperience.mb-4(type="button") #{t('about.addExperience')}
+
+        //- Skills Section
+        h2.mt-4 #{t('about.skillsSection')}
+        //- Skills Section
+        #skillsContainer
+          - var skillsArray = skills && skills.length ? skills : [{}]
+          each skill, index in skillsArray
+            .skill-entry
+              .form-group
+                label(for=`skillName${index}`) #{t('about.skillNameLabel')}
+                select.form-control(id=`skillName${index}` name=`skills[${index}][name]`)
+                  option(value="") #{t('about.selectSkill')}
+                  each skillOption in skillOptions
+                    option(value=skillOption selected=(skillOption == skill.name))= skillOption
+
+              .form-group
+                label(for=`skillProficiency${index}`) #{t('about.skillProficiencyLabel')}
+                input(type="number" class="form-control" id=`skillProficiency${index}` name=`skills[${index}][proficiency]` placeholder=t('about.skillProficiencyLabel') min="0" max="100" value=skill.proficiency || '')
+              button.btn.btn-danger.mt-2(type="button" data-toggle="modal" data-target=`#deleteSkillModal${index}`) #{t('button.delete')}
+              hr.mb-5
+        button.btn.btn-success.mt-2#addSkill(type="button") #{t('about.addSkill')}
+                div
+                  button.btn.btn-primary.float-right.mt-5(type="submit") #{t('button.save')}
+  each experience, index in experiencesArray
+      .modal.fade(id=`deleteModal${index}` tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true")
+        .modal-dialog(role="document")
+          .modal-content
+            .modal-header
+              h5.modal-title #{t('button.delete')}
+              button.close(type="button" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") &times;
+            .modal-body
+              p #{t('about.deleteConfirmMessageExperience')}
+            .modal-footer
+              button.btn.btn-secondary(type="button" data-dismiss="modal") #{t('button.cancel')}
+              form(method="POST" action="/experience/delete")
+                input(type="hidden" name="experienceIds" id=`deleteExperienceId${index}` value=experience.id)
+                button.btn.btn-danger(type="submit") #{t('button.delete')}
+
+  each skill, index in skillsArray
+      .modal.fade(id=`deleteSkillModal${index}` tabindex="-1" role="dialog" aria-labelledby="deleteSkillModalLabel" aria-hidden="true")
+        .modal-dialog(role="document")
+          .modal-content
+            .modal-header
+              h5.modal-title #{t('button.delete')}
+              button.close(type="button" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") &times;
+            .modal-body
+              p #{t('about.deleteConfirmMessageSkill')}
+            .modal-footer
+              button.btn.btn-secondary(type="button" data-dismiss="modal") #{t('button.cancel')}
+              form(method="POST" action="/skill/delete")
+                input(type="hidden" name="skillIds" id=`deleteSkillId${index}` value=skill.id)
+                button.btn.btn-danger(type="submit") #{t('button.delete')}
+  script(src="/scripts/about-form.js")

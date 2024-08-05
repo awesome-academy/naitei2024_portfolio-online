@@ -19,7 +19,6 @@ interface CloudinaryFile extends Express.Multer.File {
 
 const storage = multer.memoryStorage()
 
-
 export const upload: Multer = multer({
   storage: storage,
   limits: { fileSize: CLOUDINARY_NUM.MAX_FILE_SIZE },
