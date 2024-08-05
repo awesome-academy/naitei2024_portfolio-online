@@ -7,6 +7,7 @@ import { CLOUDINARY_NUM } from '~/constants/cloudinary.constant'
 import experienceRoute from './experience/experience.router'
 import skillRoute from './skill/skill.router'
 import blogRoute from './blog/blog.router'
+import guestRoute from './guest/guest.router'
 const router = express.Router()
 
 /* GET home page. */
@@ -38,4 +39,5 @@ router.use('/about', aboutRoute)
 router.use('/experience', experienceRoute)
 router.use('/skill', skillRoute)
 router.use('/blog', blogRoute)
+router.use('/guest', guestRoute)
 export default router

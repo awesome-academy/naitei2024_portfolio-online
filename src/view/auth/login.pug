@@ -16,9 +16,10 @@ block content
       if errors
         ul
           for error in errors
-              li.li.text-danger!= error.msg
+            li.li.text-danger!= error.msg
     .social-media
-      h5= t('auth.signUpWithSocialMedia')
+      h5= t('auth.signUpWithSocialMedia') 
+      a.btn.btn-link(href='register')= t('auth.signUp')
       .social-icons
         a(href='#')
           i.icon-social-facebook(title='Facebook')

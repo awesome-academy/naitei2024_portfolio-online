@@ -16,6 +16,9 @@ class ProjectService {
   async addProject(project: Project) {
     return this.projectRepository.save(project)
   }
+  async getProjectsByUserId(userId: number): Promise<Project[]> {
+    return this.projectRepository.find({ where: { user: { id: userId } } })
+  }
 }
 const projectService = new ProjectService()
 export default projectService

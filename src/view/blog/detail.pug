@@ -1,9 +1,10 @@
 extends ../layout
 
 block content
-  .d-flex.justify-content-end.mb-3.mr-5
-    a.btn.btn-primary.px-4.mr-2(href=`/blog/update/${blog.id}`) #{t('button.edit')}
-    button.btn.btn-danger.px-4(data-toggle="modal" data-target="#deleteModal") #{t('button.delete')}
+  if blog.userId===userId
+    .d-flex.justify-content-end.mb-3.mr-5
+      a.btn.btn-primary.px-4.mr-2(href=`/blog/update/${blog.id}`) #{t('button.edit')}
+      button.btn.btn-danger.px-4(data-toggle="modal" data-target="#deleteModal") #{t('button.delete')}
   .container
     h1.text-success.text-center= blog.title
 

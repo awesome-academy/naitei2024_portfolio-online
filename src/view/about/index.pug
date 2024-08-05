@@ -26,9 +26,9 @@ block content
               p=user.description
               p=user.hobbies
             .col-12.col-xl-5(data-scroll data-scroll-speed="2" data-scroll-position="top")
-              a.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href="#")
-                i.ri-file-download-line.ri-lg.me-2
-                | #{t('about.dowloadCV')}
+              a#copyLinkBtn.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href="javascript:void(0)" data-url=`http://localhost:3000/guest/${user.userName}` data-copied-text=`${t('about.copied')}` data-failed-text=`${t('about.failed')}`)
+                              i.ri-file-download-line.ri-lg.me-2
+                              | #{t('about.shareLink')}
               h5.fw-medium.mt-6.mb-3.mt-5 #{t('about.findMe')}
               ul.list-unstyled
                 each socialLink in user.socialLinks
@@ -39,7 +39,7 @@ block content
                     else if socialLink.url.includes('facebook.com')
                       i.ri-facebook-line.me-3.ri-lg
                       a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.facebook')}
-                    else if socialLink.url.includes('x.com')
+                    else if socialLink.url.includes('twitter.com')
                       i.ri-twitter-line.me-3.ri-lg
                       a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.twitter')}
                     else
@@ -48,5 +48,7 @@ block content
                       a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.default')}
       include ../widgets/experience
       include ../widgets/skills
+  script(src="/scripts/about-form.js")
+
 
 

@@ -11,7 +11,11 @@
     "signUpWithSocialMedia": "Sign up with social media",
     "userNotFound": "User not found",
     "verify": "Verify",
-    "code": "Code"
+    "code": "Code",
+    "emailNotVerified": "Email not verified",
+    "resendEmail": "Resend email",
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
   },
   "language": {
     "en": "English",
@@ -48,9 +52,14 @@
     "updateSuccess": "Update successfully",
     "updateFail": "Update failed",
     "deleteSuccess": "Delete successfully",
-    "deleteFail": "Delete failed"
+    "deleteFail": "Delete failed",
+    "followSuccess": "Follow successfully",
+    "unfollowSuccess": "Unfollow successfully",
+    "checkFollow":"Users cannot follow themselves",
+    "AlreadyFollow":"You are already following this user",
+    "NotFollow":"You are not following this user"
   },
-  "about": {
+  "about":{
     "titleAbout": "About Me",
     "dowloadCV": "Download My CV",
     "findMe": "Find Me Online",
@@ -62,12 +71,12 @@
     "titleLabel": "Title",
     "descriptionLabel": "Description",
     "hobbiesLabel": "Hobbies",
-    "socialLinks": "Social Links",
+    "socialLinks" : "Social Links",
     "experienceSection": "Experience",
     "companyLabel": "Company",
     "titleExperienceLabel": "Title Experience",
-    "startDateLabel": "Start Date",
-    "endDateLabel": "End Date",
+    "startDateLabel" : "Start Date",
+    "endDateLabel" : "End Date",
     "skillsSection": "Skills",
     "skillNameLabel": "Skill Name",
     "selectSkill": "Select Skill",
@@ -76,7 +85,10 @@
     "addSkill": "Add Skill",
     "locationLabel": "Location",
     "deleteConfirmMessageExperience": "Are you sure you want to delete this experience?",
-    "deleteConfirmMessageSkill": "Are you sure you want to delete this skill?"
+    "deleteConfirmMessageSkill": "Are you sure you want to delete this skill?",
+    "shareLink": "Share Link",
+    "copied": "Link Copied!",
+    "failed": "Copy Failed"
   },
   "socials": {
     "facebook": "Facebook",
@@ -115,5 +127,16 @@
     "notFound": "Blog not found",
     "createTitle": "Create Blog",
     "updateTitle": "Update Blog"
+  },
+  "guest":{
+    "follower": "Follower",
+    "following": "Following",
+    "unfollow": "Unfollow",
+    "follow": "Follow",
+    "followUserToViewBlogs": "You need to follow this user to view their blogs.",
+    "followUserToViewProjects": "You need to follow this user to view their projects."
+  },
+  "project":{
+    "noProjectFound": "No project found"
   }
 }
