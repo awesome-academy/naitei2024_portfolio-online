@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  //- Locomotive Scroll Container
+  div(data-scroll-container)
+
+    //- Main Section
+    section.container.py-3
+      //- Page Content Goes Here
+      h1.display-3(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('about.titleAbout')}
+      .d-flex.justify-content-end.mb-3
+        a.btn.btn-primary(href="/about/create") #{t('button.edit')}
+
+      .row.g-8
+        //- Profile Image
+        .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")
+          picture
+            img.img-fluid(src=user.imageUrl, alt=t('about.imageProfile'))
+        //- / Profile Image
+
+        //- Bio & CV Link
+        .col-12.col-md-7
+          .row.g-5.g-xl-8
+            .col-12.col-xl-7(data-scroll data-scroll-speed="4" data-scroll-position="top")
+              p.lead=user.title
+              p=user.description
+              p=user.hobbies
+            .col-12.col-xl-5(data-scroll data-scroll-speed="2" data-scroll-position="top")
+              a.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href="#")
+                i.ri-file-download-line.ri-lg.me-2
+                | #{t('about.dowloadCV')}
+              h5.fw-medium.mt-6.mb-3.mt-5 #{t('about.findMe')}
+              ul.list-unstyled
+                each socialLink in user.socialLinks
+                  li.d-flex.align-items-center.mb-2
+                    if socialLink.url.includes('github.com')
+                      i.ri-github-line.me-3.ri-lg
+                      a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.github')}
+                    else if socialLink.url.includes('facebook.com')
+                      i.ri-facebook-line.me-3.ri-lg
+                      a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.facebook')}
+                    else if socialLink.url.includes('twitter.com')
+                      i.ri-twitter-line.me-3.ri-lg
+                      a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.twitter')}
+                    else
+                      // Default icon and name if URL doesn't match any known social media
+                      i.ri-global-line.me-3.ri-lg
+                      a.link-body(href=socialLink.url, target="_blank", rel="noopener noreferrer") #{t('socials.default')}
+      include ../widgets/experience
+      include ../widgets/skills
+
+

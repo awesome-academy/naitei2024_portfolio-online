@@ -41,5 +41,36 @@
     "loginFail": "Đăng nhập thất bại",
     "registerSuccess": "Đăng ký thành công",
     "registerFail": "Đăng ký thất bại"
+  },
+  "about":{
+    "titleAbout": "Thông tin cá nhân",
+    "dowloadCV": "Tải CV của tôi",
+    "findMe": "Tìm tôi trên mạng",
+    "imageProfile": "Ảnh đại diện",
+    "noDataFound": "Không tìm thấy dữ liệu",
+    "serverError": "Lỗi máy chủ",
+    "titleUpdate": "Cập nhật hồ sơ",
+    "imageProfileLabel": "Ảnh đại diện",
+    "titleLabel": "Tiêu đề",
+    "descriptionLabel": "Mô tả",
+    "hobbiesLabel": "Sở thích",
+    "socialLinks" : "Liên kết mạng xã hội",
+    "experienceSection": "Kinh nghiệm",
+    "companyLabel": "Công ty",
+    "titleExperienceLabel": "Chức vụ"
+  },
+  "socials": {
+    "facebook": "Facebook",
+    "google": "Google",
+    "twitter": "Twitter",
+    "github": "Github"
+  },
+  "button": {
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "update": "Cập nhật",
+    "delete": "Xóa",
+    "add": "Thêm"
   }
+
 }

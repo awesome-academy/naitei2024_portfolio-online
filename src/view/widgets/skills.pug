@@ -1,0 +1,18 @@
+include ../partials/subtitle
+
+.section.pt-2.pb-6.skills(data-scroll)
+  +subtitle("My Skills")
+  hr
+  if skills
+    .row.gx-10.gy-5
+      each skill in skills.entries
+        //- Single Skill
+        .col-12.col-lg-6.fade-in-up(data-scroll data-scroll-position="bottom")
+          .row.align-items-center
+            .col-12.d-flex.justify-content-end
+              p.mb-0.fw-bolder= `${skill.percent}%`
+            .col-4
+              p.mb-0.small.lh-1= skill.skill
+            .col-8
+              .progress.f-h-1
+                .progress-bar(role="progressbar" style=`width: ${skill.percent}%` aria-valuenow=skill.percent aria-valuemin="0" aria-valuemax="100")
