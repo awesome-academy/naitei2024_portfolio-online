@@ -8,7 +8,8 @@
     "fullname": "Fullname",
     "userName": "Username",
     "createAccount": "Create Account",
-    "signUpWithSocialMedia": "Sign up with social media"
+    "signUpWithSocialMedia": "Sign up with social media",
+    "userNotFound": "User not found"
   },
   "language": {
     "en": "English",
@@ -41,5 +42,45 @@
     "loginFail": "Login failed",
     "registerSuccess": "Register successfully",
     "registerFail": "Register failed"
+  },
+  "about":{
+    "titleAbout": "About Me",
+    "dowloadCV": "Download My CV",
+    "findMe": "Find Me Online",
+    "imageProfile": "Image Profile",
+    "noDataFound": "No data found",
+    "serverError": "Server Error",
+    "titleUpdate": "Update Profile",
+    "imageProfileLabel": "Image Profile",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "hobbiesLabel": "Hobbies",
+    "socialLinks" : "Social Links",
+    "experienceSection": "Experience",
+    "companyLabel": "Company",
+    "titleExperienceLabel": "Title Experience",
+    "startDateLabel" : "Start Date",
+    "endDateLabel" : "End Date",
+    "skillsSection": "Skills",
+    "skillNameLabel": "Skill Name",
+    "selectSkill": "Select Skill",
+    "skillProficiencyLabel": "Skill Proficiency",
+    "addExperience": "Add Experience",
+    "addSkill": "Add Skill",
+    "locationLabel": "Location"
+  },
+  "socials": {
+    "facebook": "Facebook",
+    "google": "Google",
+    "twitter": "Twitter",
+    "github": "Github"
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "update": "Update",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add"
   }
 }
