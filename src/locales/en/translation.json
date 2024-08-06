@@ -37,13 +37,13 @@
     "userNameExist": "Username already exists",
     "invalidEmailPassword": "Invalid email or password"
   },
-  "status":{
+  "status": {
     "loginSuccess": "Login successfully",
     "loginFail": "Login failed",
     "registerSuccess": "Register successfully",
     "registerFail": "Register failed"
   },
-  "about":{
+  "about": {
     "titleAbout": "About Me",
     "dowloadCV": "Download My CV",
     "findMe": "Find Me Online",
@@ -55,12 +55,12 @@
     "titleLabel": "Title",
     "descriptionLabel": "Description",
     "hobbiesLabel": "Hobbies",
-    "socialLinks" : "Social Links",
+    "socialLinks": "Social Links",
     "experienceSection": "Experience",
     "companyLabel": "Company",
     "titleExperienceLabel": "Title Experience",
-    "startDateLabel" : "Start Date",
-    "endDateLabel" : "End Date",
+    "startDateLabel": "Start Date",
+    "endDateLabel": "End Date",
     "skillsSection": "Skills",
     "skillNameLabel": "Skill Name",
     "selectSkill": "Select Skill",
@@ -82,5 +82,8 @@
     "delete": "Delete",
     "edit": "Edit",
     "add": "Add"
+  },
+  "error": {
+    "uploadFailed": "Upload failed"
   }
 }

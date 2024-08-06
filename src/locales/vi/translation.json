@@ -36,13 +36,13 @@
     "userNameExist": "Tên người dùng đã tồn tại",
     "invalidEmailPassword": "Email hoặc mật khẩu không hợp lệ"
   },
-  "status":{
+  "status": {
     "loginSuccess": "Đăng nhập thành công",
     "loginFail": "Đăng nhập thất bại",
     "registerSuccess": "Đăng ký thành công",
     "registerFail": "Đăng ký thất bại"
   },
-  "about":{
+  "about": {
     "titleAbout": "Thông tin cá nhân",
     "dowloadCV": "Tải CV của tôi",
     "findMe": "Tìm tôi trên mạng",
@@ -54,7 +54,7 @@
     "titleLabel": "Tiêu đề",
     "descriptionLabel": "Mô tả",
     "hobbiesLabel": "Sở thích",
-    "socialLinks" : "Liên kết mạng xã hội",
+    "socialLinks": "Liên kết mạng xã hội",
     "experienceSection": "Kinh nghiệm",
     "companyLabel": "Công ty",
     "titleExperienceLabel": "Chức vụ"
@@ -71,6 +71,8 @@
     "update": "Cập nhật",
     "delete": "Xóa",
     "add": "Thêm"
+  },
+  "error": {
+    "uploadFailed": "Tải lên thất bại"
   }
-
 }
