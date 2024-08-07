@@ -29,7 +29,7 @@ export const registerPost = asyncHandler(async (req: Request, res: Response, nex
     return res.redirect('register')
   }
   req.flash('success', req.t('auth.registerSuccess'))
-  res.redirect('login')
+  res.redirect('auth/login')
 })
 export const showLoginForm = (req: Request, res: Response) => {
   res.render('auth/login')
@@ -63,6 +63,7 @@ export const loginPost = asyncHandler(async (req: Request, res: Response, next: 
     email: user.email,
     fullname: user.fullName
   }
+  req.session.save()
   req.flash('success', req.t('status.loginSuccess'))
   res.redirect('/')
 })
