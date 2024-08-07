@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  div(data-scroll-container)
+    section.container.py-3
+        .display-4(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('project.titleProject')}
+        - for(var project of projects)
+          .d-flex.justify-content-end.mb-3
+            a.btn.btn-primary(href=`/project/edit/${project.id}`) #{t('button.edit')}
+          .row.g-8
+            if project.imageUrl
+              .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")
+                picture
+                  img.img-fluid(src=project.imageUrl, alt='/images/home_placeholder.png')
+            .col-12.col-md-7
+              .row.g-5.g-xl-8
+                .col-12(data-scroll data-scroll-speed="4" data-scroll-position="top")
+                  h2=project.name
+                  p.lead=project.overviewß
+                  if project.whatYouLearn
+                    h4 #{t('project.whatYouLearn')}
+                    p=project.whatYouLearn
+                  if project.keyFeatures
+                    h4 #{t('project.keyFeatures')}
+                    p=project.keyFeatures
+                  if project.linkGithub
+                    a.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href=project.linkGithub, target="_blank", rel="noopener noreferrer")
+                      i.ri-github-line.ri-lg.me-2
+                      | #{t('project.viewOnGithub')}
