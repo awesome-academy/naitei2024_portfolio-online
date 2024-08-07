@@ -16,9 +16,6 @@ export default class Project extends BaseEntity {
   id: number
 
   @Column()
-  userId: number
-
-  @Column()
   name: string
 
   @Column('text')
