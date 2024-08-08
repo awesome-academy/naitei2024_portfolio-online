@@ -10,3 +10,7 @@ export function formatExperiencePeriod(startDate: Date, endDate: Date | null): s
   const formattedEndDate = endDate ? formatDate(endDate) : 'Present'
   return `${formattedStartDate} - ${formattedEndDate}`
 }
+export function formatDateForInput(date: Date | null): string {
+  if (!date) return ''
+  return date.toISOString().split('T')[0]
+}

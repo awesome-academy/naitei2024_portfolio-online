@@ -41,7 +41,11 @@
     "loginSuccess": "Login successfully",
     "loginFail": "Login failed",
     "registerSuccess": "Register successfully",
-    "registerFail": "Register failed"
+    "registerFail": "Register failed",
+    "updateSuccess": "Update successfully",
+    "updateFail": "Update failed",
+    "deleteSuccess": "Delete successfully",
+    "deleteFail": "Delete failed"
   },
   "about": {
     "titleAbout": "About Me",

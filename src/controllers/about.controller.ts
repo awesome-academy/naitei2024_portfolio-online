@@ -3,8 +3,9 @@ import experienceService from '~/services/experience.service'
 import skillService from '~/services/skill.service'
 import userService from '~/services/user.service'
 import asyncHandler from 'express-async-handler'
-import { formatExperiencePeriod } from '~/utils/dateUtils'
+import { formatDateForInput, formatExperiencePeriod } from '~/utils/dateUtils'
 import skillDefineService from '~/services/skillDefine.service'
+import aboutService from '~/services/about.service'
 
 function checkUserAuthentication(req: Request, res: Response): boolean {
   const userId = req.session.user?.id
@@ -36,7 +37,6 @@ export const showAbout = asyncHandler(async (req: Request, res: Response) => {
       experienceService.getExperiencesByUserId(user.id),
       skillService.getSkillsByUserId(user.id)
     ])
-
     if (user.title === null || user.description === null) {
       req.flash('info', req.t('about.noDataFound'))
       return res.redirect('about/create')
@@ -47,7 +47,8 @@ export const showAbout = asyncHandler(async (req: Request, res: Response) => {
         company: entry.company,
         years: formatExperiencePeriod(entry.startDate, entry.endDate),
         title: entry.title,
-        description: entry.description
+        description: entry.description,
+        location: entry.location
       }))
     }
 
@@ -79,5 +80,31 @@ export const showCreateAbout = asyncHandler(async (req: Request, res: Response) 
     experienceService.getExperiencesByUserId(user.id),
     skillService.getSkillsByUserId(user.id)
   ])
-  res.render('about/create', { user, experience: experienceEntries, skills: skillEntries, skillOptions })
+  const formattedExperiences = experienceEntries.map((exp) => ({
+    ...exp,
+    startDate: formatDateForInput(exp.startDate),
+    endDate: formatDateForInput(exp.endDate)
+  }))
+  res.render('about/create', {
+    user,
+    experiences: formattedExperiences || [],
+    skills: skillEntries || [],
+    skillOptions
+  })
+})
+
+export const updateAboutPost = asyncHandler(async (req: Request, res: Response) => {
+  try {
+    const userId = req.session.user?.id
+    if (!userId) {
+      req.flash('error', req.t('auth.userNotFound'))
+      return res.redirect('/auth/login')
+    }
+    const updatedUser = await aboutService.updateUserInfo(Number(userId), req.body, req.file)
+    req.flash('success', req.t('status.updateSuccess'))
+    res.redirect('/about')
+  } catch (error) {
+    req.flash('error', req.t('status.updateFail'))
+    res.redirect('/about')
+  }
 })

@@ -7,6 +7,9 @@ class UserService {
   async findUserById(id: number): Promise<User | null> {
     return this.userRepository.findOne({ where: { id }, relations: ['socialLinks'] })
   }
+  async saveUser(user: User): Promise<User> {
+    return this.userRepository.save(user)
+  }
 }
 const userService = new UserService()
 export default userService

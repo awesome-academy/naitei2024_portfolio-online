@@ -1,6 +1,6 @@
 include ../partials/subtitle
 
-.section(data-scroll)
+.section(data-scroll).pt-4
   +subtitle('Experience')
   hr
   each entry in experience.entries
@@ -12,4 +12,4 @@ include ../partials/subtitle
       .col-12.col-lg-8
         p.fw-bolder= entry.title
         p.text-muted.fw-light.fs-6= entry.description
-        a.link-body(href="#")= entry['url-title']
+        p= entry.location

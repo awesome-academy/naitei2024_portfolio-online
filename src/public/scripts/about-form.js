@@ -2,51 +2,52 @@
 /* global $ */
 
 $(document).ready(function () {
-  let experienceCount = 1
-  let skillCount = 1
+  let experienceCount = $('#experienceContainer > div').length
+  let skillCount = $('#skillsContainer > div').length
 
   $('#addExperience').on('click', function () {
-    const $container = $('#experienceContainer')
-    const $newEntry = $container.children().first().clone(true)
+    const container = $('#experienceContainer')
+    const newEntry = container.children().first().clone()
+    const inputs = newEntry.find('input')
+    const textareas = newEntry.find('textarea')
 
-    $newEntry.find('input').each(function () {
-      $(this)
-        .attr('name', $(this).attr('name').replace('[0]', `[${experienceCount}]`))
-        .val('')
+    inputs.each(function () {
+      this.name = this.name.replace(/\[\d+\]/, `[${experienceCount}]`)
+      this.value = ''
     })
 
-    $newEntry.find('textarea').each(function () {
-      $(this)
-        .attr('name', $(this).attr('name').replace('[0]', `[${experienceCount}]`))
-        .val('')
+    textareas.each(function () {
+      this.name = this.name.replace(/\[\d+\]/, `[${experienceCount}]`)
+      this.value = ''
     })
 
-    const $title = $('<h5>').text(`Experience ${experienceCount + 1}`)
-    $container.append($title)
+    const title = $('<h5>').text(`Experience ${experienceCount + 1}`)
+    container.append(title)
 
-    $container.append($newEntry)
+    container.append(newEntry)
     experienceCount++
   })
 
   $('#addSkill').on('click', function () {
-    const $container = $('#skillsContainer')
-    const $newEntry = $container.children().first().clone(true)
+    const container = $('#skillsContainer')
+    const newEntry = container.children().first().clone()
+    const inputs = newEntry.find('input')
+    const selects = newEntry.find('select')
 
-    $newEntry.find('input').each(function () {
-      $(this)
-        .attr('name', $(this).attr('name').replace('[0]', `[${skillCount}]`))
-        .val('')
+    inputs.each(function () {
+      this.name = this.name.replace(/\[\d+\]/, `[${skillCount}]`)
+      this.value = ''
     })
 
-    $newEntry.find('select').each(function () {
-      $(this)
-        .attr('name', $(this).attr('name').replace('[0]', `[${skillCount}]`))
-        .prop('selectedIndex', 0)
+    selects.each(function () {
+      this.name = this.name.replace(/\[\d+\]/, `[${skillCount}]`)
+      this.selectedIndex = 0
     })
-    const $title = $('<h5>').text(`Skill ${skillCount + 1}`)
-    $container.append($title)
 
-    $container.append($newEntry)
+    const title = $('<h5>').text(`Skill ${skillCount + 1}`)
+    container.append(title)
+
+    container.append(newEntry)
     skillCount++
   })
 })
