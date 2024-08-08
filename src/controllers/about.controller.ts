@@ -4,6 +4,7 @@ import skillService from '~/services/skill.service'
 import userService from '~/services/user.service'
 import asyncHandler from 'express-async-handler'
 import { formatExperiencePeriod } from '~/utils/dateUtils'
+import skillDefineService from '~/services/skillDefine.service'
 
 function checkUserAuthentication(req: Request, res: Response): boolean {
   const userId = req.session.user?.id
@@ -61,4 +62,22 @@ export const showAbout = asyncHandler(async (req: Request, res: Response) => {
     req.flash('error', req.t('about.serverError'))
     return res.redirect('/')
   }
+})
+export const showCreateAbout = asyncHandler(async (req: Request, res: Response) => {
+  const userId = req.session.user?.id
+  if (!checkUserAuthentication(req, res)) {
+    return
+  }
+
+  const user = await userService.findUserById(Number(userId))
+  if (!user) {
+    return handleUserNotFound(req, res)
+  }
+  const skillOption = await skillDefineService.getSkillDefines()
+  const skillOptions = skillOption.map((skill) => skill.name)
+  const [experienceEntries, skillEntries] = await Promise.all([
+    experienceService.getExperiencesByUserId(user.id),
+    skillService.getSkillsByUserId(user.id)
+  ])
+  res.render('about/create', { user, experience: experienceEntries, skills: skillEntries, skillOptions })
 })

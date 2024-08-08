@@ -1,7 +1,7 @@
 import express from 'express'
-import { showAbout } from '~/controllers/about.controller'
+import { showAbout, showCreateAbout } from '~/controllers/about.controller'
 const router = express.Router()
 
 router.get('/', showAbout)
-
+router.get('/create', showCreateAbout)
 export default router
