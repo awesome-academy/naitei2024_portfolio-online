@@ -32,10 +32,23 @@ export const upload: Multer = multer({
 
 export const uploadToCloudinary = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const files: CloudinaryFile[] = req.files as CloudinaryFile[]
-    if (!files || files.length === 0) {
+    let files: CloudinaryFile[] = []
+
+    if (Array.isArray(req.files)) {
+      files = req.files as CloudinaryFile[]
+    } else if (req.files && typeof req.files === 'object') {
+      for (const key in req.files) {
+        if (Object.prototype.hasOwnProperty.call(req.files, key)) {
+          const fileArray = req.files[key] as CloudinaryFile[]
+          files.push(...fileArray)
+        }
+      }
+    }
+
+    if (files.length === 0) {
       return next(new Error('No files provided'))
     }
+
     const cloudinaryUrls: string[] = []
     for (const file of files) {
       const resizedBuffer: Buffer = await sharp(file.buffer).resize({ width: 800, height: 600 }).toBuffer()

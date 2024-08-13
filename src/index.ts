@@ -28,7 +28,7 @@ i18next
   .use(Backend)
   .use(middleware.LanguageDetector)
   .init({
-    fallbackLng: 'vi',
+    fallbackLng: 'en',
     preload: ['en', 'vi'],
     supportedLngs: ['en', 'vi'],
     backend: {
