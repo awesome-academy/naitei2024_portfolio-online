@@ -3,10 +3,10 @@ extends ../layout
 block content
   //- Locomotive Scroll Container
   div(data-scroll-container)
-    include ../partials/flash-messages
 
     //- Main Section
     section.container.py-3
+      include ../partials/flash-messages
       h1.display-3.mb-5(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('about.titleUpdate')}
 
       //- Form to Add/Edit About Information

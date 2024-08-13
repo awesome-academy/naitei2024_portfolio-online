@@ -28,7 +28,7 @@ export const registerPost = asyncHandler(async (req: Request, res: Response, nex
     }
     return res.redirect('register')
   }
-  req.flash('success', req.t('auth.registerSuccess'))
+  req.flash('success', req.t('status.registerSuccess'))
   res.redirect('login')
 })
 export const showLoginForm = (req: Request, res: Response) => {
