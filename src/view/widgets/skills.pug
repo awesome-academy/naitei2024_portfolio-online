@@ -12,7 +12,7 @@ include ../partials/subtitle
             .col-12.d-flex.justify-content-end
               p.mb-0.fw-bolder= `${skill.percent}%`
             .col-4
-              p.mb-0.small.lh-1= skill.skill
+              p.mb-0.small= skill.skill
             .col-8
               .progress.f-h-1
                 .progress-bar.progress-bar-high(role="progressbar" style=`width: ${skill.percent}%` aria-valuenow=skill.percent aria-valuemin="0" aria-valuemax="100")

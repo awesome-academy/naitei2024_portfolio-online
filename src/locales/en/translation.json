@@ -9,7 +9,9 @@
     "userName": "Username",
     "createAccount": "Create Account",
     "signUpWithSocialMedia": "Sign up with social media",
-    "userNotFound": "User not found"
+    "userNotFound": "User not found",
+    "verify": "Verify",
+    "code": "Code"
   },
   "language": {
     "en": "English",

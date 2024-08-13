@@ -9,7 +9,9 @@
     "userName": "Tên người dùng",
     "createAccount": "Tạo tài khoản",
     "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội",
-    "userNotFound": "Người dùng không tồn tại"
+    "userNotFound": "Người dùng không tồn tại",
+    "verify": "Xác minh",
+    "code": "Mã xác thực"
   },
   "language": {
     "en": "Tiếng Anh",
