@@ -28,7 +28,9 @@
     "projects": "Projects",
     "login": "Login",
     "logout": "Logout",
-    "setting": "Settings"
+    "setting": "Settings",
+    "welcome": "Welcome to My Portfolio",
+    "script": "Explore my work in IT field, where I showcase my skills, projects, and solutions. Enjoy the journey!"
   },
   "validation": {
     "required": "This field is required",
@@ -126,7 +128,9 @@
     "deleteTitle": "Delete Blog",
     "notFound": "Blog not found",
     "createTitle": "Create Blog",
-    "updateTitle": "Update Blog"
+    "updateTitle": "Update Blog",
+    "noProjectFound": "No project found",
+    "add": "Add"
   },
   "guest":{
     "follower": "Follower",
@@ -136,7 +140,20 @@
     "followUserToViewBlogs": "You need to follow this user to view their blogs.",
     "followUserToViewProjects": "You need to follow this user to view their projects."
   },
-  "project":{
-    "noProjectFound": "No project found"
+  "error": {
+    "uploadFailed": "Upload failed"
+  },
+  "project": {
+    "titleProject": "Projects",
+    "titleUpdate": "Update Profile",
+    "imageLabel": "Image",
+    "nameLabel": "Project name",
+    "overviewLabel": "Overview",
+    "whatYouLearnLabel": "What you learn",
+    "keyFeaturesLabel": "Key features",
+    "linkGithubLabel": "Link Github",
+    "deleteSuccess": "Delete successfully",
+    "addProject": "Add Project",
+    "noDataFound":"No data found"
   }
 }

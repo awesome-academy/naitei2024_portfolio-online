@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  script(src='/scripts/confirm.js')
+  div(data-scroll-container)
+    section.container.py-3.g-8
+        .row.row-space-between
+          h1 #{t('project.titleProject')} 
+          a.btn.btn-primary(href='/project/add') #{t('project.addProject')} 
+        br
+        .display-4(data-scroll data-scroll-speed="6" data-scroll-position="top")
+        hr
+        - for(var project of projects)
+          .d-flex.justify-content-end.mb-3
+            a.btn.btn-primary.btn-margin-right(href=`/project/edit/${project.id}`) #{t('button.update')}
+            button.btn.btn-danger.btn-delete-project(onconfirm=`/project/delete/${project.id}`) #{t('button.delete')}
+          .row.g-8
+            if project.imageUrl
+              .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")
+                picture
+                  img.img-fluid(src=project.imageUrl, alt=project.name)                 
+            else 
+              .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")
+                picture
+                  img.img-fluid(src='/images/no-image.jpg', alt=project.name)
+            .col-12.col-md-7
+              .row.g-5.g-xl-8
+                .col-12(data-scroll data-scroll-speed="4" data-scroll-position="top")
+                  h2=project.name
+                  p.lead=project.overviewß
+                  if project.whatYouLearn
+                    h4 #{t('project.whatYouLearnLabel')}:
+                    p=project.whatYouLearn
+                  if project.keyFeatures
+                    h4 #{t('project.keyFeaturesLabel')}:
+                    p=project.keyFeatures
+                  if project.linkGithub
+                    a.btn.btn-dark.w-100.d-flex.align-items-center.justify-content-center(href=project.linkGithub, target="_blank", rel="noopener noreferrer")
+                      i.ri-github-line.ri-lg.me-2
+                      | #{t('project.linkGithubLabel')}
+          hr

@@ -1,0 +1,34 @@
+extends ../layout
+  
+block content
+  div(data-scroll-container)
+    section.container.py-3
+      include ../partials/flash-messages
+      h1.display-3.mb-5(data-scroll data-scroll-speed="6" data-scroll-position="top") #{t('project.titleUpdate')}
+      form(method="POST", action="/project/save", enctype="multipart/form-data")
+        .form-group
+          input(type="hidden" name="id" value=project.id)
+        .form-group
+          label(for="image") #{t('project.imageLabel')}
+          input(type="file" accept="image/png, image/jpeg" class="form-control" id="image" name="image" placeholder=t('project.imageUrlLabel'))
+        .form-group
+          label(for="name") #{t('project.nameLabel')}
+          input(type="text" class="form-control" id="name" name="name" placeholder=t('project.nameLabel') value=project.name)
+          
+        .form-group
+          label(for="overview") #{t('project.overviewLabel')}
+          textarea(class="form-control" id="overview" name="overview" rows="3" placeholder=t('project.overviewLabel'))=project.overview
+          
+        .form-group
+          label(for="whatYouLearn") #{t('project.whatYouLearnLabel')}
+          textarea(class="form-control" id="whatYouLearn" name="whatYouLearn" rows="3" placeholder=t('project.whatYouLearnLabel'))=project.whatYouLearn
+          
+        .form-group
+          label(for="keyFeatures") #{t('project.keyFeaturesLabel')}
+          textarea(class="form-control" id="keyFeatures" name="keyFeatures" rows="3" placeholder=t('project.keyFeaturesLabel'))=project.keyFeatures
+          
+        .form-group
+          label(for="linkGithub") #{t('project.linkGithubLabel')}
+          input(type="text" class="form-control" id="linkGithub" name="linkGithub" placeholder=t('project.linkGithubLabel') value=project.linkGithub)
+          
+        button(type="submit" class="btn btn-primary") #{t('button.update')}

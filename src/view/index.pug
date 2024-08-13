@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  .container-fluid.h-100.d-flex.flex-column.justify-content-center
-    .row
-      .col-md-6.d-flex.align-items-center.flex-column.justify-content-center
-        h2=title
-        p=title
+  .container-fluid.h-100.d-flex.flex-column.justify-content-center.mt-4
+    .row.mt-4
+      .col-md-6.p-5.d-flex.align-items-center.flex-column.justify-content-center
+        h2=t('home.welcome')
+        p.text-center=t('home.script')
       .col-md-6.d-flex.align-items-center.justify-content-center
         .home-img.img-container
-          img.img-fluid(src='/images/home_placeholder.png', alt='Portfolio')
+          img.home-img(src='/images/home_logo.png', alt='Portfolio')
