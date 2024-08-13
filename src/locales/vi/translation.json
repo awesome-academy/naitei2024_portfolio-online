@@ -8,7 +8,8 @@
     "fullname": "Họ tên",
     "userName": "Tên người dùng",
     "createAccount": "Tạo tài khoản",
-    "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội"
+    "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội",
+    "userNotFound": "Người dùng không tồn tại"
   },
   "language": {
     "en": "Tiếng Anh",
@@ -34,15 +35,20 @@
     "fullname": "Họ tên không hợp lệ",
     "emailExist": "Email đã tồn tại",
     "userNameExist": "Tên người dùng đã tồn tại",
-    "invalidEmailPassword": "Email hoặc mật khẩu không hợp lệ"
+    "invalidEmailPassword": "Email hoặc mật khẩu không hợp lệ",
+    "invalidId": "ID không hợp lệ"
   },
   "status": {
     "loginSuccess": "Đăng nhập thành công",
     "loginFail": "Đăng nhập thất bại",
     "registerSuccess": "Đăng ký thành công",
-    "registerFail": "Đăng ký thất bại"
+    "registerFail": "Đăng ký thất bại",
+    "updateSuccess": "Cập nhật thành công",
+    "updateFail": "Cập nhật thất bại",
+    "deleteSuccess": "Xóa thành công",
+    "deleteFail": "Xóa thất bại"
   },
-  "about": {
+  "about":{
     "titleAbout": "Thông tin cá nhân",
     "dowloadCV": "Tải CV của tôi",
     "findMe": "Tìm tôi trên mạng",
@@ -54,10 +60,22 @@
     "titleLabel": "Tiêu đề",
     "descriptionLabel": "Mô tả",
     "hobbiesLabel": "Sở thích",
-    "socialLinks": "Liên kết mạng xã hội",
+    "socialLinks" : "Liên kết mạng xã hội",
     "experienceSection": "Kinh nghiệm",
     "companyLabel": "Công ty",
-    "titleExperienceLabel": "Chức vụ"
+    "titleExperienceLabel": "Mô tả kinh nghiệm",
+    "deleteConfirmMessageExperience": "Bạn có chắc chắn muốn xóa kinh nghiệm này không?",
+    "deleteConfirmMessageSkill": "Bạn có chắc chắn muốn xóa kỹ năng này không?",
+    "skillNameLabel": "Tên kỹ năng",
+    "skillLevelLabel": "Mức độ kỹ năng",
+    "addExperience": "Thêm kinh nghiệm",
+    "addSkill": "Thêm kỹ năng",
+    "locationLabel": "Vị Trí",
+    "startDateLabel": "Ngày bắt đầu",
+    "endDateLabel": "Ngày kết thúc",
+    "skillProficiencyLabel": "Mức độ kỹ năng",
+    "selectSkill": "Chọn kỹ năng",
+    "skillsSection": "Kỹ năng"
   },
   "socials": {
     "facebook": "Facebook",
@@ -70,9 +88,11 @@
     "save": "Lưu",
     "update": "Cập nhật",
     "delete": "Xóa",
-    "add": "Thêm"
+    "add": "Thêm",
+    "edit": "Chỉnh sửa"
   },
   "error": {
     "uploadFailed": "Tải lên thất bại"
   }
+
 }

@@ -4,6 +4,8 @@ import { showRegisterForm } from '~/controllers/auth.controller'
 import authRoute from './auth/auth.router'
 import aboutRoute from './about/about.router'
 import { CLOUDINARY_NUM } from '~/constants/cloudinary.constant'
+import experienceRoute from './experience/experience.router'
+import skillRoute from './skill/skill.router'
 const router = express.Router()
 
 /* GET home page. */
@@ -33,4 +35,6 @@ router.post(
 )
 router.use('/auth', authRoute)
 router.use('/about', aboutRoute)
+router.use('/experience', experienceRoute)
+router.use('/skill', skillRoute)
 export default router
