@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  .auth-form
+    form(method='POST')
+      .form-group
+        input(type="text" hidden class="form-control" id="id" name="id" value=id)
+      .form-group 
+        input(type="text" class="form-control" id="code" name="code" placeholder=t('auth.code'))
+      .form-group
+        button.btn.btn-block.create-account(type='submit')= t('auth.verify')

@@ -30,6 +30,9 @@ export default class User extends BaseEntity {
   email: string
 
   @Column()
+  emailVerified: boolean
+
+  @Column()
   fullName: string
 
   @Column()

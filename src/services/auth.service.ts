@@ -33,6 +33,7 @@ class AuthService {
       fullName: fullname,
       email,
       role: Role.USER,
+      emailVerified: false,
       password: hashPassword(password),
       userName: username
     })
