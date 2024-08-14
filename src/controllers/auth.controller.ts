@@ -63,7 +63,7 @@ export const loginPost = asyncHandler(async (req: Request, res: Response, next: 
   }
   if (!user.emailVerified) {
     req.flash('error', req.t('auth.emailNotVerified'))
-    return res.redirect('/login')
+    return res.redirect('/auth/login')
   }
   req.session.user = {
     id: user.id,

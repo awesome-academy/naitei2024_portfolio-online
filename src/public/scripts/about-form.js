@@ -50,4 +50,26 @@ $(document).ready(function () {
     container.append(newEntry)
     skillCount++
   })
+  const copyLinkBtn = $('#copyLinkBtn')
+
+  if (copyLinkBtn.length) {
+    copyLinkBtn.on('click', function () {
+      const urlToCopy = $(this).data('url')
+
+      navigator.clipboard
+        .writeText(urlToCopy)
+        .then(() => {
+          const originalHTML = copyLinkBtn.html()
+          copyLinkBtn.html('<i class="ri-check-line ri-lg me-2"></i>' + copyLinkBtn.data('copied-text'))
+
+          setTimeout(() => {
+            copyLinkBtn.html(originalHTML)
+          }, 2000)
+        })
+        .catch((err) => {
+          console.error('Failed to copy: ', err)
+          copyLinkBtn.html('<i class="ri-error-warning-line ri-lg me-2"></i>' + copyLinkBtn.data('failed-text'))
+        })
+    })
+  }
 })

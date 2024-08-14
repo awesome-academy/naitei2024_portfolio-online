@@ -49,10 +49,11 @@ export const createBlogPost = asyncHandler(async (req, res) => {
 })
 
 export const showBlogDetail = asyncHandler(async (req, res) => {
+  const userId = req.session.user?.id
   const blogId = parseInt(req.params.id)
   const blog = await getAndValidateBlog(req, res, blogId)
   if (!blog) return
-  res.render('blog/detail', { blog })
+  res.render('blog/detail', { blog, userId })
 })
 
 export const getBlogUpdatePage = asyncHandler(async (req, res) => {

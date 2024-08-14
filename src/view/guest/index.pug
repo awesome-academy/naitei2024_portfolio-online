@@ -1,0 +1,97 @@
+extends ../layout
+
+block content
+  include ../partials/flash-messages
+  .profile-container
+    .main-content
+      .header
+        if user
+          .avatar-large
+            span.avatar-letter= user.userName.charAt(0).toUpperCase()
+          .user-info
+            h2.name.mr-5= user.fullName
+          .stats
+            span #{followStats.followersCount} #{t('guest.follower')} · 
+            span ·
+            span #{followStats.followingCount} #{t('guest.following')}
+          .share-btn
+              if isFollowing
+                form(action=`/guest/${user.userName}/unfollow` method='POST')
+                  button.unfollow-btn.btn-success(type='submit') #{t('guest.unfollow')}
+              else
+                form(action=`/guest/${user.userName}/follow` method='POST')
+                  button.follow-btn.btn-succes(type='submit') #{t('guest.follow')}
+
+      .tabs
+        a.tab(href=`${baseUrl}?activeTab=about` class=(activeTab === 'about' ? 'active' : '')) #{t('home.about')}
+        a.tab(href=`${baseUrl}?activeTab=blogs` class=(activeTab === 'blogs' ? 'active' : '')) #{t('home.blogs')}
+        a.tab(href=`${baseUrl}?activeTab=projects` class=(activeTab === 'projects' ? 'active' : '')) #{t('home.projects')}
+
+      .tab-content
+        if activeTab === 'about'
+            #about.tab-pane.active
+              #about-content
+                .container.py-3
+                  .row.g-8
+                    if user
+                      .col-12
+                        .row.g-5.g-xl-8
+                          .col-12.col-md-5
+                            picture
+                              img.img-fluid(src=user.imageUrl, alt=t('about.imageProfile'))
+                          .col-12.col-md-7
+                            .row.g-5.g-xl-8
+                              .col-12
+                                p.lead= user.title
+                              .col-12
+                                p= user.description
+                              .col-12
+                                p= user.hobbies
+                          .col-12
+                            include ../widgets/experience
+                          .col-12
+                            include ../widgets/skills
+                    else
+                      .col
+                        p.text-center= t('about.noUserFound') 
+
+        if activeTab === 'blogs'
+          #blogs.tab-pane.active
+            if isFollowing
+              #blogs-content
+                .row
+                  if blogs && blogs.length > 0
+                    each blog in blogs
+                      .col-lg-4.col-md-6.mb-4
+                        .card
+                          img.card-img-top(src=blog.imageUrl)
+                          .card-body
+                            h5.card-title.text-center.py-2= blog.title
+                            p= blog.description
+                            a.btn.btn-light.d-flex.justify-content-center(href=`/blog/${blog.id}`) #{t('blog.clickToReadMore')}
+                  else
+                    .col
+                      p.text-center #{t('blog.noBlogFound')}
+            else
+              p.text-center #{t('guest.followUserToViewBlogs')}
+
+        if activeTab === 'projects'
+          #projects.tab-pane.active
+            if isFollowing
+              #projects-content
+                .row
+                  if projects && projects.length > 0
+                    each project in projects
+                      .col-lg-4.col-md-6.mb-4
+                        .card
+                          img.card-img-top(src=project.imageUrl)
+                          .card-body
+                            h5.card-title.text-center.py-2= project.overview
+                            p= project.whatYouLearn
+                            p= project.linkGithub
+                            a.btn.btn-light.d-flex.justify-content-center(href=`/project/${project.id}`) #{t('project.clickToReadMore')}
+                  else
+                    .col
+                      p.text-center #{t('project.noProjectFound')}
+            else
+              p.text-center #{t('guest.followUserToViewProjects')}

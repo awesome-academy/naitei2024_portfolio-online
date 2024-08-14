@@ -10,6 +10,9 @@ class UserService {
   async saveUser(user: User): Promise<User> {
     return this.userRepository.save(user)
   }
+  async findUserByUserName(userName: string): Promise<User | null> {
+    return this.userRepository.findOne({ where: { userName } })
+  }
 }
 const userService = new UserService()
 export default userService

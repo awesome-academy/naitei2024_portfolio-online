@@ -23,6 +23,7 @@ block content
               li.li.text-danger!= error.msg
     .social-media
       h5= t('auth.signUpWithSocialMedia')
+      a.btn.btn-link(href='login')= t('auth.signIn')
       .social-icons
         a(href='#')
           i.icon-social-facebook(title='Facebook')

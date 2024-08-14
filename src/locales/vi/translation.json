@@ -11,7 +11,11 @@
     "signUpWithSocialMedia": "Đăng ký bằng mạng xã hội",
     "userNotFound": "Người dùng không tồn tại",
     "verify": "Xác minh",
-    "code": "Mã xác thực"
+    "code": "Mã xác thực",
+    "emailNotVerified": "Email chưa được xác minh",
+    "resendEmail": "Gửi lại email",
+    "signUp": "Đăng ký",
+    "signIn": "Đăng nhập"
   },
   "language": {
     "en": "Tiếng Anh",
@@ -48,7 +52,12 @@
     "updateSuccess": "Cập nhật thành công",
     "updateFail": "Cập nhật thất bại",
     "deleteSuccess": "Xóa thành công",
-    "deleteFail": "Xóa thất bại"
+    "deleteFail": "Xóa thất bại",
+    "followSuccess": "Theo dõi thành công",
+    "unfollowSuccess": "Bỏ theo dõi thành công",
+    "checkFollow":"Người dùng không thể theo dõi chính mình",
+    "AlreadyFollow":"Bạn đã theo dõi người dùng này",
+    "NotFollow":"Bạn chưa theo dõi người dùng này"
   },
   "about":{
     "titleAbout": "Thông tin cá nhân",
@@ -77,7 +86,10 @@
     "endDateLabel": "Ngày kết thúc",
     "skillProficiencyLabel": "Mức độ kỹ năng",
     "selectSkill": "Chọn kỹ năng",
-    "skillsSection": "Kỹ năng"
+    "skillsSection": "Kỹ năng",
+    "shareLink": "Chia sẻ liên kết",
+    "copied": "Liên kết đã được sao chép!",
+    "failed": "Sao chép thất bại"
   },
   "socials": {
     "facebook": "Facebook",
@@ -119,6 +131,17 @@
     "notFound": "Không tìm thấy bài viết",
     "createTitle": "Tạo bài viết",
     "updateTitle": "Cập nhật bài viết"
+  },
+  "guest": {
+    "follower": "Người theo dõi",
+    "following": "Đang theo dõi",
+    "follow": "Theo dõi",
+    "unfollow": "Bỏ theo dõi",
+    "followUserToViewBlogs": "Theo dõi để xem bài viết",
+    "followUserToViewProjects": "Theo dõi để xem dự án"
+  },
+  "project":{
+    "noProjectFound": "Không tìm thấy dự án"
   }
 
 }
