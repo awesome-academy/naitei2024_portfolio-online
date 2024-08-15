@@ -70,6 +70,7 @@ export const loginPost = asyncHandler(async (req: Request, res: Response, next: 
     email: user.email,
     fullname: user.fullName
   }
+  req.session.save()
   req.flash('success', req.t('status.loginSuccess'))
   res.redirect('/')
 })

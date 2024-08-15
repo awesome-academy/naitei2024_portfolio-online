@@ -28,7 +28,9 @@
     "projects": "Dự án",
     "login": "Đăng nhập",
     "logout": "Đăng ký",
-    "setting": "Cài đặt"
+    "setting": "Cài đặt",
+    "welcome": "Chào mừng đến với Portfolio của tôi",
+    "script": "Khám phá công việc của tôi trong lĩnh vực CNTT, nơi tôi trưng bày kỹ năng, dự án và giải pháp của mình tại đây!"
   },
   "validation": {
     "required": "Trường này không được để trống",
@@ -130,7 +132,9 @@
     "deleteTitle": "Xóa bài viết",
     "notFound": "Không tìm thấy bài viết",
     "createTitle": "Tạo bài viết",
-    "updateTitle": "Cập nhật bài viết"
+    "updateTitle": "Cập nhật bài viết",
+    "noProjectFound": "Không tìm thấy dự án",
+    "add": "Add"
   },
   "guest": {
     "follower": "Người theo dõi",
@@ -140,8 +144,17 @@
     "followUserToViewBlogs": "Theo dõi để xem bài viết",
     "followUserToViewProjects": "Theo dõi để xem dự án"
   },
-  "project":{
-    "noProjectFound": "Không tìm thấy dự án"
+  "project": {
+    "titleProject": "Dự án",
+    "titleUpdate": "Cập nhật dự án",
+    "imageLabel": "Ảnh",
+    "nameLabel": "Tên dự án",
+    "overviewLabel" : "Tổng quan",
+    "whatYouLearnLabel": "Những gì bạn học được",
+    "keyFeaturesLabel": "Tính năng chính",
+    "linkGithubLabel": "Liên kết Github",
+    "deleteSuccess": "Xóa thành công",
+    "addProject": "Thêm dự án",
+    "noDataFound": "Không tìm thấy dữ liệu"
   }
-
 }

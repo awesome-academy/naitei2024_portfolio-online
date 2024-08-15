@@ -1,4 +1,5 @@
 import { AppDataSource } from '~/config/data-source'
+import Project from '~/entity/project.entity'
 import User from '~/entity/user.entity'
 
 class UserService {
