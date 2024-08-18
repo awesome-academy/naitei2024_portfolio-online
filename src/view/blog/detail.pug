@@ -1,28 +1,76 @@
 extends ../layout
 
 block content
-  if blog.userId===userId
+  if blog.userId === userId
     .d-flex.justify-content-end.mb-3.mr-5
       a.btn.btn-primary.px-4.mr-2(href=`/blog/update/${blog.id}`) #{t('button.edit')}
       button.btn.btn-danger.px-4(data-toggle="modal" data-target="#deleteModal") #{t('button.delete')}
   .container
     h1.text-success.text-center= blog.title
-
+    
     figure.figure
       img.figure-img.img-fluid.rounded-5.d-block.ml-5.w-80(src=blog.imageUrl alt='Blog Image')
       figcaption.figure-caption.text-center= blog.title
-
+    
     p.text-justify= blog.description
-
+    
     div
       p.text-justify= blog.content
-
+    
     if blog.additionalImages.length > 0
-      .col-xl-8.col-lg-8.col-md-8.mt-4.p-4.text-center
       .row
         each image, index in blog.additionalImages
           .col-sm-6.col-lg-6.mb-3.text-center
-            img.w-100.h-100.object-fit.img-fluid.rounded-5(src=image alt='Additional Image')
+            img.w-40.h-100.object-fit.img-fluid.rounded-5(src=image alt='Additional Image')
+    
+    h3.text-center.my-4 #{t('blog.comments')} (#{comments.length})
+    
+    if userId
+      .card.mb-4
+        .card-body
+          h5.card-title #{t('blog.newComment')}
+          form(action=`/blog/${blog.id}/comment` method="POST")
+            .form-group.row.align-items-center
+              .col-sm-2.text-center
+                img.img-fluid.rounded-circle(src=user.imageUrl || "https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar")
+              .col-sm-10
+                textarea.form-control#message(name="content" rows="3" placeholder="Share your thoughts..." required)
+            .text-right.mt-2
+              button.btn.btn-primary.px-4(type="submit") #{t('blog.postComment')}
+    
+    if comments && comments.length > 0
+      .comment-list
+        each comment in comments
+          .card.mb-3.shadow-sm
+            .card-body
+              .media
+                img.mr-3.rounded-circle(src=comment.user.imageUrl || "https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" width="64")
+                .media-body
+                  h5.mt-0= comment.user.fullName
+                  small.text-muted= comment.createdAt.toLocaleDateString() 
+                  p.mt-2.comment-content(id=`comment-content-${comment.id}`)= comment.content
+                  form.edit-comment-form.d-none(id=`edit-form-${comment.id}` action=`/blog/${blog.id}/comment/${comment.id}/update` method="POST")
+                    .form-group
+                      textarea.form-control(name="content" rows="3" required)= comment.content
+                    .text-right
+                      button.btn.btn-secondary.btn-sm.mr-2.cancel-edit(type="button" data-comment-id=comment.id) #{t('button.cancel')}
+                      button.btn.btn-primary.btn-sm(type="submit") #{t('button.save')}
+                  .d-flex.justify-content-between.align-items-center
+                    small.text-muted
+                      i.far.fa-clock.mr-1
+                      | #{comment.createdAt.toLocaleTimeString()}
+                    .comment-actions.mt-2
+                      if userId === comment.userId
+                        button.btn.btn-outline-primary.btn-sm.mr-2.edit-comment(type="button" data-comment-id=comment.id)
+                          i.fas.fa-edit
+                          |  #{t('button.edit')}
+                      if userId === comment.userId || userId === blog.userId
+                        form(action=`/blog/${blog.id}/comment/${comment.id}/delete` method="POST" class="d-inline")
+                          button.btn.btn-outline-danger.btn-sm(type="submit")
+                            i.fas.fa-trash-alt
+                            |  #{t('button.delete')}
+    else
+      .alert.alert-info.text-center #{t('blog.noComments')}
 
   .modal.fade#deleteModal(tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true")
     .modal-dialog(role="document")
@@ -30,10 +78,11 @@ block content
         .modal-header
           h5.modal-title#deleteModalLabel #{t('modal.deleteTitle')}
           button.close(type="button" data-dismiss="modal" aria-label="Close")
-            span(aria-hidden="true") &times;
+            span(aria-hidden="true") ×
         .modal-body
           p #{t('blog.deleteConfirm')}
         .modal-footer
           button.btn.btn-secondary(type="button" data-dismiss="modal") #{t('button.cancel')}
           a.btn.btn-danger(href=`/blog/delete/${blog.id}`) #{t('button.delete')}
+  script(src='/scripts/comment-edit.js')
 

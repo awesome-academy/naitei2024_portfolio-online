@@ -8,6 +8,7 @@ import {
   showCreateBlog,
   updateBlogPosts
 } from '~/controllers/blog.controller'
+import { createComment, deleteComment, updateComment } from '~/controllers/comment.controller'
 import upload from '~/middlewares/upload'
 import checkUserAuthentication from '~/middlewares/userAuthentication.middlewave'
 const router = express.Router()
@@ -38,4 +39,7 @@ router.post(
 
 router.get('/delete/:id', checkUserAuthentication, deleteBlog)
 
+router.post('/:id/comment', checkUserAuthentication, createComment)
+router.post('/:id/comment/:commentId/delete', checkUserAuthentication, deleteComment)
+router.post('/:id/comment/:commentId/update', checkUserAuthentication, updateComment)
 export default router

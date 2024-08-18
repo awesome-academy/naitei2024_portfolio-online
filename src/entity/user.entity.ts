@@ -17,7 +17,7 @@ import { Follow } from './follow.entity'
 import SocialLink from './social_link.entity'
 import Skill from './skill.entity'
 import { Role } from '~/enum/role'
-
+import Comment from './comment.entity'
 @Entity()
 export default class User extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -99,6 +99,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => SocialLink, (socialLink) => socialLink.user)
   socialLinks: SocialLink[]
 
+  @OneToMany(() => Comment, (comment) => comment.user)
+  comments: Comment[]
   constructor(data?: Partial<User>) {
     super()
     if (data) {

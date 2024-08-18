@@ -39,7 +39,7 @@ export const showProjectForm = asyncHandler(async (req: Request, res: Response) 
   res.render('project/form', { user, project })
 })
 
-export const postSaveProject = asyncHandler(async (req: Request, res: Response) => { 
+export const postSaveProject = asyncHandler(async (req: Request, res: Response) => {
   const userId = req.session.user?.id
   const user = await userService.findUserById(Number(userId))
   const project = req.body

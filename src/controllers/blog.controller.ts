@@ -2,6 +2,8 @@ import asyncHandler from 'express-async-handler'
 import blogService from '~/services/blog.service'
 import { NextFunction, Request, Response } from 'express'
 import Blog from '~/entity/blog.entity'
+import commentService from '~/services/comment.service'
+import userService from '~/services/user.service'
 
 async function getAndValidateBlog(req: Request, res: Response, blogId: number): Promise<Blog | null> {
   const blog = await blogService.getBlogById(blogId)
@@ -53,7 +55,9 @@ export const showBlogDetail = asyncHandler(async (req, res) => {
   const blogId = parseInt(req.params.id)
   const blog = await getAndValidateBlog(req, res, blogId)
   if (!blog) return
-  res.render('blog/detail', { blog, userId })
+  const comments = await commentService.getCommentsByBlogId(blogId)
+  const user = await userService.findUserById(blog.userId)
+  res.render('blog/detail', { blog, userId, comments, user })
 })
 
 export const getBlogUpdatePage = asyncHandler(async (req, res) => {
