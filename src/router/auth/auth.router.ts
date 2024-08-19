@@ -6,7 +6,8 @@ import {
   loginPost,
   registerPost,
   verifyEmailForm,
-  verifyEmailPost
+  verifyEmailPost,
+  logout
 } from '~/controllers/auth.controller'
 import { LoginDto } from '~/dtos/Login.dto'
 import { RegisterDto } from '~/dtos/Register.dto'
@@ -18,5 +19,6 @@ router.get('/login', showLoginForm)
 router.post('/login', validateDto(LoginDto), loginPost)
 router.get('/verify', verifyEmailForm)
 router.post('/verify', verifyEmailPost)
+router.get('/logout', logout)
 
 export default router

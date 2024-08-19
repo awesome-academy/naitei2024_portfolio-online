@@ -15,7 +15,8 @@
     "emailNotVerified": "Email not verified",
     "resendEmail": "Resend email",
     "signUp": "Sign Up",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "logoutFail": "Logout failed"
   },
   "language": {
     "en": "English",
