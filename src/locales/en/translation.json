@@ -130,7 +130,11 @@
     "createTitle": "Create Blog",
     "updateTitle": "Update Blog",
     "noProjectFound": "No project found",
-    "add": "Add"
+    "add": "Add",
+    "comments": "Comments",
+    "newComment": "New Comment",
+    "postComment": "Post Comment",
+    "noComments": "No comments yet. Be the first to share your thoughts!"
   },
   "guest":{
     "follower": "Follower",

@@ -134,7 +134,11 @@
     "createTitle": "Tạo bài viết",
     "updateTitle": "Cập nhật bài viết",
     "noProjectFound": "Không tìm thấy dự án",
-    "add": "Add"
+    "add": "Add",
+    "comments": "Bình luận",
+    "newComment": "Bình luận mới",
+    "noComments": "Không có bình luận nào",
+    "postComment": "Đăng bình luận"
   },
   "guest": {
     "follower": "Người theo dõi",
