@@ -102,3 +102,13 @@ export const verifyEmailPost = asyncHandler(async (req: Request, res: Response) 
   req.flash('success', req.t('auth.verifyEmailSuccess'))
   res.redirect('/auth/login')
 })
+
+export const logout = (req: Request, res: Response) => {
+  req.session.destroy((err) => {
+    if (err) {
+      req.flash('error', req.t('auth.logoutFail'))
+      return res.redirect('/')
+    }
+    res.redirect('/auth/login')
+  })
+}

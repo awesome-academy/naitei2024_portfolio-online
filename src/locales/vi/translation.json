@@ -15,7 +15,8 @@
     "emailNotVerified": "Email chưa được xác minh",
     "resendEmail": "Gửi lại email",
     "signUp": "Đăng ký",
-    "signIn": "Đăng nhập"
+    "signIn": "Đăng nhập",
+    "logoutFail": "Đăng xuất thất bại"
   },
   "language": {
     "en": "Tiếng Anh",
