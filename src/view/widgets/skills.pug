@@ -9,10 +9,14 @@ include ../partials/subtitle
         //- Single Skill
         .col-12.col-lg-6.fade-in-up.mb-4(data-scroll data-scroll-position="bottom")
           .row.align-items-center
-            .col-12.d-flex.justify-content-end
-              p.mb-0.fw-bolder= `${skill.percent}%`
-            .col-4
-              p.mb-0.small= skill.skill
-            .col-8
-              .progress.f-h-1
-                .progress-bar.progress-bar-high(role="progressbar" style=`width: ${skill.percent}%` aria-valuenow=skill.percent aria-valuemin="0" aria-valuemax="100")
+            .col-12.d-flex.justify-content-between
+              if skill.isHighlighted
+                p.mb-0.skill-highlight
+                  | #{skill.skill}
+                p.mb-0.skill-highlight
+                  | #{skill.yearsOfExperience} #{t('about.yearsOfExperienceLabel')}
+              else
+                p.mb-0.skill-name
+                  | #{skill.skill}
+                p.mb-0.skill-experience
+                  | #{skill.yearsOfExperience} #{t('about.yearsOfExperienceLabel')}

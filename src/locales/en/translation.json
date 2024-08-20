@@ -91,7 +91,9 @@
     "deleteConfirmMessageSkill": "Are you sure you want to delete this skill?",
     "shareLink": "Share Link",
     "copied": "Link Copied!",
-    "failed": "Copy Failed"
+    "failed": "Copy Failed",
+    "yearsOfExperienceLabel": "Months of Experience",
+    "highlightSkillLabel": "Highlight Skill"
   },
   "socials": {
     "facebook": "Facebook",

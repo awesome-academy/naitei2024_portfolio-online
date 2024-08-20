@@ -23,7 +23,6 @@ $(document).ready(function () {
 
     const title = $('<h5>').text(`Experience ${experienceCount + 1}`)
     container.append(title)
-
     container.append(newEntry)
     experienceCount++
   })
@@ -33,10 +32,14 @@ $(document).ready(function () {
     const newEntry = container.children().first().clone()
     const inputs = newEntry.find('input')
     const selects = newEntry.find('select')
+    const checkboxes = newEntry.find('input[type="checkbox"]')
 
+    // Update the names and clear the values
     inputs.each(function () {
       this.name = this.name.replace(/\[\d+\]/, `[${skillCount}]`)
-      this.value = ''
+      if (this.type !== 'checkbox') {
+        this.value = ''
+      }
     })
 
     selects.each(function () {
@@ -44,12 +47,17 @@ $(document).ready(function () {
       this.selectedIndex = 0
     })
 
+    checkboxes.each(function () {
+      this.name = this.name.replace(/\[\d+\]/, `[${skillCount}]`)
+      this.checked = false // Reset checkbox
+    })
+
     const title = $('<h5>').text(`Skill ${skillCount + 1}`)
     container.append(title)
-
     container.append(newEntry)
     skillCount++
   })
+
   const copyLinkBtn = $('#copyLinkBtn')
 
   if (copyLinkBtn.length) {

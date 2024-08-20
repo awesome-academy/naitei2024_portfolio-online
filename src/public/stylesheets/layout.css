@@ -442,3 +442,9 @@ font-size:15px;
 margin-right:10px;
 }
 
+.skill-highlight {
+  color: #3498db;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}

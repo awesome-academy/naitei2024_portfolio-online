@@ -55,7 +55,8 @@ export const showAbout = asyncHandler(async (req: Request, res: Response) => {
     const skills = {
       entries: skillEntries.map((entry) => ({
         skill: entry.name,
-        percent: entry.proficiency
+        yearsOfExperience: entry.yearsOfExperience,
+        isHighlighted: entry.isHighlighted
       }))
     }
     res.render('about', { experience, skills, user })
