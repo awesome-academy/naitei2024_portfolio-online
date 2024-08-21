@@ -105,8 +105,12 @@ block content
                     option(value=skillOption selected=(skillOption == skill.name))= skillOption
 
               .form-group
-                label(for=`skillProficiency${index}`) #{t('about.skillProficiencyLabel')}
-                input(type="number" class="form-control" id=`skillProficiency${index}` name=`skills[${index}][proficiency]` placeholder=t('about.skillProficiencyLabel') min="0" max="100" value=skill.proficiency || '')
+                label(for=`yearsOfExperience${index}`) #{t('about.yearsOfExperienceLabel')}
+                input(type="number" class="form-control" id=`yearsOfExperience${index}` name=`skills[${index}][yearsOfExperience]` placeholder=t('about.yearsOfExperienceLabel') min="0" max="50" value=skill.yearsOfExperience || '')
+              // giao diện để tick chọn skill nổi bật
+              .form-group
+                label.mr-2(for=`isHighlighted${index}`) #{t('about.highlightSkillLabel')}
+                input(type="checkbox" id=`isHighlighted${index}` name=`skills[${index}][isHighlighted]` checked=skill.isHighlighted)
               button.btn.btn-danger.mt-2(type="button" data-toggle="modal" data-target=`#deleteSkillModal${index}`) #{t('button.delete')}
               hr.mb-5
         button.btn.btn-success.mt-2#addSkill(type="button") #{t('about.addSkill')}

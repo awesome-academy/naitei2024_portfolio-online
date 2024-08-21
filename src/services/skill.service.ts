@@ -24,11 +24,15 @@ class SkillService {
 
     const updatedSkills = skillsData.map((skill) => {
       const existingSkill = existingSkills.find((s) => s.id === skill.id)
+      const isHighlighted = skill.isHighlighted === 'on' ? true : false
       if (existingSkill) {
         // Cập nhật skill hiện có
         Object.assign(existingSkill, {
           name: Array.isArray(skill.name) ? skill.name[0] : skill.name,
-          proficiency: Array.isArray(skill.proficiency) ? skill.proficiency[0] : skill.proficiency
+          yearsOfExperience: Array.isArray(skill.yearsOfExperience)
+            ? skill.yearsOfExperience[0]
+            : skill.yearsOfExperience,
+          isHighlighted
         })
         updatedSkillsMap.set(existingSkill.id, true)
         return existingSkill
@@ -37,7 +41,10 @@ class SkillService {
         return {
           userId,
           name: Array.isArray(skill.name) ? skill.name[0] : skill.name,
-          proficiency: Array.isArray(skill.proficiency) ? skill.proficiency[0] : skill.proficiency
+          yearsOfExperience: Array.isArray(skill.yearsOfExperience)
+            ? skill.yearsOfExperience[0]
+            : skill.yearsOfExperience,
+          isHighlighted
         }
       }
     })

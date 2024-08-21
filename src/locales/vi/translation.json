@@ -92,7 +92,9 @@
     "skillsSection": "Kỹ năng",
     "shareLink": "Chia sẻ liên kết",
     "copied": "Liên kết đã được sao chép!",
-    "failed": "Sao chép thất bại"
+    "failed": "Sao chép thất bại",
+    "yearsOfExperienceLabel": "Số tháng của kinh nghiệm",
+    "highlightSkillLabel": "Kỹ năng nổi bật"
   },
   "socials": {
     "facebook": "Facebook",

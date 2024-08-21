@@ -21,8 +21,11 @@ export default class Skill extends BaseEntity {
   @Column()
   name: string
 
-  @Column({ nullable: true })
-  proficiency: string
+  @Column()
+  yearsOfExperience: number
+
+  @Column({ default: false })
+  isHighlighted: boolean
 
   @CreateDateColumn()
   createdAt: Date

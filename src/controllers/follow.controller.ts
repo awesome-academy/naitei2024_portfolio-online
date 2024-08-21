@@ -96,7 +96,8 @@ export const showUserProfile = asyncHandler(async (req: Request, res: Response) 
     skills = {
       entries: skillEntries.map((entry) => ({
         skill: entry.name,
-        percent: entry.proficiency
+        yearsOfExperience: entry.yearsOfExperience,
+        isHighlighted: entry.isHighlighted
       }))
     }
   } else if (activeTab === Home.BLOGS && isFollowing) {
