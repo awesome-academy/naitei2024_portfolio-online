@@ -9,26 +9,42 @@ html(lang='en')
     script(src="/scripts/bootstrap.min.js" )
     link(rel='stylesheet' , href='/stylesheets/layout.css' )
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-  body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand(href='/') 
-        strong #{t('home.portfolio')}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  body.bg-white
+    nav.navbar.navbar-expand-lg.navbar-light
+      if !session.user
+        a.navbar-brand(href='/') 
+          strong #{t('home.portfolio')}
+      else
+        a.navbar-brand(href='/') 
+          strong.text-dark #{session.user.fullname}
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
-      .collapse.navbar-collapse(id='navbarSupportedContent')
+      .collapse.navbar-collapse(id='navbarSupportedContent') 
         ul.navbar-nav.mr-auto
-          li.nav-item.active
-            a.nav-link(href='/about') #{t('home.about')}
-          li.nav-item.active
-            a.nav-link(href='/blog') #{t('home.blogs')}
-          li.nav-item.active
-            a.nav-link(href='/project') #{t('home.projects')}
+          if session.user
+            li.nav-item.active
+              a.nav-link(href='/about') #{t('home.about')}
+            li.nav-item.active
+              a.nav-link(href='/blog') #{t('home.blogs')}
+            li.nav-item.active
+              a.nav-link(href='/project') #{t('home.projects')}
+        if session.user
+          form.navbar-search.ml-auto(role='search', method='GET', action='/search')
+                input.form-control.search-form(type='text', placeholder='Search', name='')
         ul.navbar-nav.float-right
-          li.nav-item
-            a.nav-link(href='/auth/login') #{t('home.login')}
-          li.nav-item.dropdown
-            a.nav-link.dropdown-toggle(id='navbarDropdownMenuLink', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Accounts
-            .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-              a.dropdown-item(href='#') #{t('home.setting')}
-              a.dropdown-item(href='/auth/logout') #{t('home.logout')}
+          if !session.user
+            li.nav-item
+              a.nav-link(href='/auth/login') 
+                strong #{t('home.login')}
+          else
+            li.nav-item
+              a.nav-link(href='/notifications')
+                i.fas.fa-bell
+          if session.user
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle(id='navbarDropdownMenuLink', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Accounts
+              .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                a.dropdown-item(href='#') #{t('home.setting')}              
+                a.dropdown-item(href='/auth/logout') #{t('home.logout')}
     block content
