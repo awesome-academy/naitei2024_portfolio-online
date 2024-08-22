@@ -8,6 +8,7 @@ import experienceService from '~/services/experience.service'
 import skillService from '~/services/skill.service'
 import followService from '~/services/follow.service'
 import { Home } from '~/enum/home'
+import { STATUSFOLLOW } from '~/enum/follow'
 
 const checkFollowUser = (req: Request, res: Response): number | null => {
   const followerId = req.session.user?.id
@@ -19,7 +20,7 @@ const checkFollowUser = (req: Request, res: Response): number | null => {
   return Number(followerId)
 }
 
-export const followUser = asyncHandler(async (req: Request, res: Response) => {
+export const requestFollow = asyncHandler(async (req: Request, res: Response) => {
   const followerId = checkFollowUser(req, res)
   if (!followerId) return
 
@@ -28,18 +29,45 @@ export const followUser = asyncHandler(async (req: Request, res: Response) => {
   const userToFollow = await userService.findUserByUserName(userName)
   if (!userToFollow) {
     req.flash('error', req.t('auth.userNotFound'))
-    return res.redirect('/auth/login')
+    return
   }
 
-  const result = await followService.followUser(followerId, userToFollow.id)
+  const result = await followService.requestFollow(Number(followerId), userToFollow.id)
   if (result.success) {
-    req.flash('success', req.t('status.followSuccess'))
+    req.flash('success', req.t('status.followRequestSent'))
   } else {
     req.flash('error', result.message)
   }
   res.redirect(`/guest/${userName}`)
 })
 
+export const acceptFollow = asyncHandler(async (req: Request, res: Response) => {
+  const followingId = checkFollowUser(req, res)
+  if (!followingId) return
+  const followerId = Number(req.params.followerId)
+
+  const result = await followService.acceptFollow(followerId, Number(followingId)) // hai tham số
+  if (result.success) {
+    req.flash('success', req.t('status.followRequestAccepted'))
+  } else {
+    req.flash('error', result.message)
+  }
+  res.redirect(`/notifications`)
+})
+export const rejectFollow = asyncHandler(async (req: Request, res: Response) => {
+  const followingId = checkFollowUser(req, res)
+  if (!followingId) return
+
+  const followerId = Number(req.params.followerId)
+
+  const result = await followService.rejectFollow(followerId, Number(followingId))
+  if (result.success) {
+    req.flash('success', req.t('status.followRequestRejected'))
+  } else {
+    req.flash('error', result.message)
+  }
+  res.redirect(`/notifications`)
+})
 export const unfollowUser = asyncHandler(async (req: Request, res: Response) => {
   const followerId = checkFollowUser(req, res)
   if (!followerId) return
@@ -71,10 +99,12 @@ export const showUserProfile = asyncHandler(async (req: Request, res: Response) 
     return res.render('guest/index', { user: null })
   }
 
-  const isFollowing = currentUserId ? await followService.checkFollowStatus(Number(currentUserId), user.id) : false
-  const followStats = await followService.getFollowStats(user.id)
+  const followStatus = currentUserId
+    ? await followService.checkFollowStatus(Number(currentUserId), user.id)
+    : STATUSFOLLOW.NOT_FOLLOWING
+  const followCount = await followService.getFollowCount(user.id)
   const activeTab = (req.query.activeTab as string) || Home.ABOUT
-
+  const isFollowing = followStatus === STATUSFOLLOW.ACCEPTED
   let experience = null
   let skills = null
   let blogs = null
@@ -100,22 +130,24 @@ export const showUserProfile = asyncHandler(async (req: Request, res: Response) 
         isHighlighted: entry.isHighlighted
       }))
     }
-  } else if (activeTab === Home.BLOGS && isFollowing) {
+  } else if (activeTab === Home.BLOGS && followStatus === STATUSFOLLOW.ACCEPTED) {
     blogs = await blogService.getBlogsByUserId(user.id)
-  } else if (activeTab === Home.PROJECTS && isFollowing) {
+  } else if (activeTab === Home.PROJECTS && followStatus === STATUSFOLLOW.ACCEPTED) {
     projects = await projectService.getProjectsByUserId(user.id)
   }
 
   res.render('guest/index', {
     user,
+    followStatus,
+    followCount,
     isFollowing,
-    followStats,
     experience,
     skills,
     blogs,
     projects,
     baseUrl: `/guest/${userName}`,
     activeTab,
-    currentUser: req.session.user
+    currentUser: req.session.user,
+    STATUSFOLLOW
   })
 })

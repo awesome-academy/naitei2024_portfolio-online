@@ -60,7 +60,10 @@
     "unfollowSuccess": "Bỏ theo dõi thành công",
     "checkFollow":"Người dùng không thể theo dõi chính mình",
     "AlreadyFollow":"Bạn đã theo dõi người dùng này",
-    "NotFollow":"Bạn chưa theo dõi người dùng này"
+    "NotFollow":"Bạn chưa theo dõi người dùng này",
+    "followRequestSent": "Yêu cầu theo dõi đã được gửi",
+    "followRequestAccept": "Yêu cầu theo dõi đã được chấp nhận",
+    "followRequestReject": "Yêu cầu theo dõi đã bị từ chối"
   },
   "about":{
     "titleAbout": "Thông tin cá nhân",
@@ -149,7 +152,8 @@
     "follow": "Theo dõi",
     "unfollow": "Bỏ theo dõi",
     "followUserToViewBlogs": "Theo dõi để xem bài viết",
-    "followUserToViewProjects": "Theo dõi để xem dự án"
+    "followUserToViewProjects": "Theo dõi để xem dự án",
+    "followRequestPending": "Đang chờ"
   },
   "project": {
     "titleProject": "Dự án",
@@ -163,5 +167,12 @@
     "deleteSuccess": "Xóa thành công",
     "addProject": "Thêm dự án",
     "noDataFound": "Không tìm thấy dữ liệu"
+  },
+  "notifications" : {
+    "title": "Lời Mời Kết Bạn",
+    "accept": "Chấp nhận",
+    "reject": "Từ chối",
+    "noPendingRequests": "Không có yêu cầu nào"
+
   }
 }
