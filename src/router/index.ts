@@ -7,6 +7,8 @@ import experienceRoute from './experience/experience.router'
 import skillRoute from './skill/skill.router'
 import blogRoute from './blog/blog.router'
 import guestRoute from './guest/guest.router'
+import { showNotification } from '~/controllers/notification.controller'
+import checkUserAuthentication from '~/middlewares/userAuthentication.middlewave'
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -19,6 +21,7 @@ router.get('/', function (req: Request, res: Response, next: NextFunction) {
   res.render('index')
   console.log(req.session.user)
 })
+router.get('/notifications', checkUserAuthentication, showNotification)
 router.get('/register', showRegisterForm)
 router.post('/register', registerPost)
 router.use('/auth', authRoute)

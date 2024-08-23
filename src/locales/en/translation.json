@@ -60,7 +60,10 @@
     "unfollowSuccess": "Unfollow successfully",
     "checkFollow":"Users cannot follow themselves",
     "AlreadyFollow":"You are already following this user",
-    "NotFollow":"You are not following this user"
+    "NotFollow":"You are not following this user",
+    "followRequestSent":"Follow request sent",
+    "followRequestAccepted":"Follow request accepted",
+    "followRequestRejected":"Follow request rejected"
   },
   "about":{
     "titleAbout": "About Me",
@@ -145,7 +148,9 @@
     "unfollow": "Unfollow",
     "follow": "Follow",
     "followUserToViewBlogs": "You need to follow this user to view their blogs.",
-    "followUserToViewProjects": "You need to follow this user to view their projects."
+    "followUserToViewProjects": "You need to follow this user to view their projects.",
+    "followRequestPending": "Pending"
+
   },
   "error": {
     "uploadFailed": "Upload failed"
@@ -162,5 +167,11 @@
     "deleteSuccess": "Delete successfully",
     "addProject": "Add Project",
     "noDataFound":"No data found"
+  },
+  "notifications": {
+    "title": " Friend Request",
+    "accept": "Accept",
+    "reject": "Reject",
+    "noPendingRequests": "No pending requests"
   }
 }

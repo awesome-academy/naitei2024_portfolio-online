@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1.follow-requests.my-3= t('notifications.title')
+
+  if pendingRequests.length > 0
+    .follow-requests
+      each request in pendingRequests
+        .follow-request
+          .avatar
+            img(src=request.follower.imageUrl, alt=request.follower.fullName)
+          .info
+            .name
+              a(href=`/guest/${request.follower.userName}`)= request.follower.fullName
+            .small.text-muted
+                      i.far.fa-clock.mr-1
+                      | #{request.createdAt.toLocaleTimeString()}
+            .action.float-right
+              form(action=`/guest/${request.followerId}/accept`, method='POST')
+                button.btn.btn-success(type='submit')= t('notifications.accept')
+              form(action=`/guest/${request.followerId}/reject`, method='POST')
+                button.btn.btn-danger(type='submit')= t('notifications.reject')
+  else
+    .no-requests
+      p= t('notifications.noPendingRequests')

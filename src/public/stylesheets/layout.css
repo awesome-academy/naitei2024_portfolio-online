@@ -454,3 +454,93 @@ margin-right:10px;
   max-width: 400px;
   margin-right: 300px;
 }
+/* Follow Requests Container */
+.follow-requests {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* Individual Follow Request Card */
+.follow-request {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar */
+.follow-request .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 16px;
+}
+
+.follow-request .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info */
+.follow-request .info {
+  flex-grow: 1;
+}
+
+.follow-request .info .name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+/* Actions */
+.follow-request .info .action {
+  display: flex;
+  gap: 8px;
+}
+
+.follow-request .info .action button {
+  flex: 1;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.follow-request .info .action .btn-success {
+  background-color: #4267b2;
+  border-color: #4267b2;
+  color: #fff;
+}
+
+.follow-request .info .action .btn-danger {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+}
+
+/* No Requests Message */
+.no-requests {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #888;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 3px 5px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}

@@ -11,16 +11,18 @@ block content
           .user-info
             h2.name.mr-5= user.fullName
           .stats
-            span #{followStats.followersCount} #{t('guest.follower')} · 
+            span #{followCount.followersCount} #{t('guest.follower')} · 
             span ·
-            span #{followStats.followingCount} #{t('guest.following')}
+            span #{followCount.followingCount} #{t('guest.following')}
           .share-btn
-              if isFollowing
-                form(action=`/guest/${user.userName}/unfollow` method='POST')
-                  button.unfollow-btn.btn-success(type='submit') #{t('guest.unfollow')}
-              else
-                form(action=`/guest/${user.userName}/follow` method='POST')
-                  button.follow-btn.btn-succes(type='submit') #{t('guest.follow')}
+            if followStatus === STATUSFOLLOW.NOT_FOLLOWING
+              form(action=`/guest/${user.userName}/follow` method='POST')
+                button.follow-btn.btn-success(type='submit') #{t('guest.follow')}
+            else if followStatus === STATUSFOLLOW.PENDING
+              button.btn-secondary(disabled) #{t('guest.followRequestPending')}
+            else if followStatus === STATUSFOLLOW.ACCEPTED
+              form(action=`/guest/${user.userName}/unfollow` method='POST')
+                button.unfollow-btn.btn-success(type='submit') #{t('guest.unfollow')}
 
       .tabs
         a.tab(href=`${baseUrl}?activeTab=about` class=(activeTab === 'about' ? 'active' : '')) #{t('home.about')}
