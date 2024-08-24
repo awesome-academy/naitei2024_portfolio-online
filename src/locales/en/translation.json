@@ -16,7 +16,16 @@
     "resendEmail": "Resend email",
     "signUp": "Sign Up",
     "signIn": "Sign In",
-    "logoutFail": "Logout failed"
+    "logoutFail": "Logout failed",
+    "forgotPassword": "Forgot Password",
+    "submit": "Submit",
+    "verifyEmailFail": "Verify email failed",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "changePasswordSuccess": "Change password successfully",
+    "verifyEmailCode": "Verify Email Code",
+    "verifyEmail": "Verify Email",
+    "changePassword": "Change Password"
   },
   "language": {
     "en": "English",
@@ -45,7 +54,8 @@
     "emailExist": "Email already exists",
     "userNameExist": "Username already exists",
     "invalidEmailPassword": "Invalid email or password",
-    "invalidId": "Invalid ID"
+    "invalidId": "Invalid ID",
+    "passwordNotMatch": "Password does not match"
   },
   "status": {
     "loginSuccess": "Login successfully",
