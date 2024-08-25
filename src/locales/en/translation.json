@@ -190,5 +190,9 @@
     "accept": "Accept",
     "reject": "Reject",
     "noPendingRequests": "No pending requests"
+  },
+  "search": {
+    "searchResult": "Search Result",
+    "noResult": "No result found"
   }
 }

@@ -29,9 +29,11 @@ html(lang='en')
               a.nav-link(href='/blog') #{t('home.blogs')}
             li.nav-item.active
               a.nav-link(href='/project') #{t('home.projects')}
-        if session.user && session.user.role === 'user'
-          form.navbar-search.ml-auto(role='search', method='GET', action='/search')
-                input.form-control.search-form(type='text', placeholder='Search', name='')
+        if session.user
+            form.navbar-search.ml-auto(role='search', method='GET', action='/search')
+                input.form-control.search-form(type='text', placeholder='Enter username or fullname to search user', name='q')
+
+        i.fas.fa-search
         ul.navbar-nav.float-right
           if !session.user
             li.nav-item

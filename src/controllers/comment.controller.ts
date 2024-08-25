@@ -27,7 +27,9 @@ export const deleteComment = asyncHandler(async (req, res) => {
   const commentId = parseInt(req.params.commentId)
   const blogId = parseInt(req.params.id)
   const userId = req.session.user?.id
+  console.log('userId', userId)
   const comment = await commentService.getCommentById(commentId)
+  console.log('comment', comment)
   // chỉ cho phép xóa comment của chính mình hoặc của blog của mình
   if (!comment || (comment.userId !== userId && comment.blog.userId !== userId)) {
     req.flash('error', req.t('comment.deleteFailed'))
