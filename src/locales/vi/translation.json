@@ -16,7 +16,16 @@
     "resendEmail": "Gửi lại email",
     "signUp": "Đăng ký",
     "signIn": "Đăng nhập",
-    "logoutFail": "Đăng xuất thất bại"
+    "logoutFail": "Đăng xuất thất bại",
+    "forgotPassword": "Quên mật khẩu",
+    "submit": "Gửi",
+    "verifyEmailFail": "Xác minh email thất bại",
+    "newPassword": "Mật khẩu mới",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "changePasswordSuccess": "Thay đổi mật khẩu thành công",
+    "verifyEmailCode": "Mã xác minh email",
+    "verifyEmail": "Xác minh email",
+    "changePassword": "Thay đổi mật khẩu"
   },
   "language": {
     "en": "Tiếng Anh",
@@ -45,7 +54,8 @@
     "emailExist": "Email đã tồn tại",
     "userNameExist": "Tên người dùng đã tồn tại",
     "invalidEmailPassword": "Email hoặc mật khẩu không hợp lệ",
-    "invalidId": "ID không hợp lệ"
+    "invalidId": "ID không hợp lệ",
+    "passwordNotMatch": "Mật khẩu không khớp"
   },
   "status": {
     "loginSuccess": "Đăng nhập thành công",

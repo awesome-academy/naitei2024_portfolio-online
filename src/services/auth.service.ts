@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import { AppDataSource } from '~/config/data-source'
 import { LoginDto } from '~/dtos/Login.dto'
 import { RegisterDto } from '~/dtos/Register.dto'
@@ -49,6 +50,23 @@ class AuthService {
       return { user: null, error: LoginError.EMAILNOTEXISTORPASSWORDINCORRECT }
     }
     return { user, error: null }
+  }
+
+  async changePassword(id: number, password: string): Promise<{ success: boolean; error?: string }> {
+    try {
+      await this.userRepository.update(id, { password: hashPassword(password) })
+    } catch (e) {
+      return { success: false, error: t('auth.changePasswordFailed') }
+    }
+    return { success: true }
+  }
+
+  async getUserByEmail(email: string): Promise<User | null> {
+    const user = await this.userRepository.findOneBy({ email })
+    if (!user) {
+      return null
+    }
+    return user
   }
 }
 const authService = new AuthService()

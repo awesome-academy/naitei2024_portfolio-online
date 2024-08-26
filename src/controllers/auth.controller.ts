@@ -112,3 +112,68 @@ export const logout = (req: Request, res: Response) => {
     res.redirect('/auth/login')
   })
 }
+
+export const emailForChangePasswordForm = (req: Request, res: Response) => {
+  res.render('auth/change-password-form-email')
+}
+
+export const emailForChangePasswordPost = asyncHandler(async (req: Request, res: Response) => {
+  const email = req.body.email
+  const user = await authService.getUserByEmail(email)
+  if (!user) {
+    req.flash('error', req.t('auth.emailNotExist'))
+    return res.redirect('/auth/change-password-form-email')
+  }
+
+  mailService.sendMail(email).then((verification) => {
+    res.render(`auth/change-password-form-code`, { id: verification.id })
+  })
+})
+
+export const verifyEmailForChangePasswordPost = asyncHandler(async (req: Request, res: Response) => {
+  const { id, code } = req.body
+  const verification = await mailService.getVerificationById(parseInt(id as string))
+  if (!verification) {
+    req.flash('error', req.t('auth.verifyEmailFail'))
+    return res.redirect('/auth/login')
+  }
+  mailService.verifyEmail(verification.email, code).then((result) => {
+    if (!result) {
+      req.flash('error', req.t('auth.verifyEmailFail'))
+      return res.redirect('/auth/login')
+    }
+    res.render('auth/change-password-form', { email: verification.email })
+  })
+})
+
+export const changePasswordForm = asyncHandler(async (req: Request, res: Response) => {
+  const id = req.query.id
+  const verification = await mailService.getVerificationById(parseInt(id as string))
+  if (!verification) {
+    req.flash('error', req.t('auth.verifyEmailFail'))
+    return res.redirect('/auth/login')
+  }
+  res.render('auth/change-password', { id })
+})
+
+export const changePasswordPost = asyncHandler(async (req: Request, res: Response) => {
+  const { newPassword, confirmPassword, email } = req.body
+  if (newPassword !== confirmPassword) {
+    req.flash('error', req.t('validation.passwordNotMatch'))
+    res.redirect('/auth/login')
+  }
+  const user = await authService.getUserByEmail(email)
+
+  if (!user) {
+    req.flash('error', req.t('auth.userNotExist'))
+    res.redirect('/auth/login')
+  }
+  try {
+    const result = await authService.changePassword(user!.id, newPassword)
+  } catch (e) {
+    req.flash('error', req.t('auth.changePasswordFailed'))
+    return res.redirect('/auth/change-password')
+  }
+  req.flash('success', req.t('auth.changePasswordSuccess'))
+  res.redirect('/auth/login')
+})
