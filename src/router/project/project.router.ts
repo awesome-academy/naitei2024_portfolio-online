@@ -7,7 +7,7 @@ import {
   uploadProjectImage,
   deleteProject
 } from '~/controllers/project.controller'
-import checkUserAuthentication from '~/middlewares/userAuthentication.middlewave'
+import { checkUserAuthentication } from '~/middlewares/authentication.middleware'
 
 const router = express.Router()
 

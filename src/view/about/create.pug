@@ -13,18 +13,22 @@ block content
       form(method="POST" action="/about/update" enctype="multipart/form-data")
         .form-group
           label(for="imageUrl") #{t('about.imageProfileLabel')}
+          span.text-danger *
           input(type="file" class="form-control" id="imageUrl" name="imageUrl")
 
         .form-group
           label(for="title") #{t('about.titleLabel')}
+          span.text-danger *
           input(type="text" class="form-control" id="title" name="title" placeholder=t('about.titleLabel') value=user.title)
 
         .form-group
           label(for="description") #{t('about.descriptionLabel')}
+          span.text-danger *
           textarea(class="form-control" id="description" name="description" rows="3" placeholder=t('about.descriptionLabel'))= user.description
 
         .form-group
           label(for="hobbies") #{t('about.hobbiesLabel')}
+          span.text-danger *
           textarea(class="form-control" id="hobbies" name="hobbies" rows="3" placeholder=t('about.hobbiesLabel'))= user.hobbies
 
         //- Social Links
@@ -44,14 +48,17 @@ block content
 
         .form-group
           label(for="urlGit") #{t('socials.github')}
+          span.text-danger *
           input(type="url" class="form-control" id="urlGit" name="socialLinks[urlGit]" placeholder="https://github.com/yourprofile" value=githubUrl)
 
         .form-group
           label(for="urlFb") #{t('socials.facebook')}
+          span.text-danger *
           input(type="url" class="form-control" id="urlFb" name="socialLinks[urlFb]" placeholder="https://facebook.com/yourprofile" value=facebookUrl)
 
         .form-group
           label(for="urlTw") #{t('socials.twitter')}
+          span.text-danger *
           input(type="url" class="form-control" id="urlTw" name="socialLinks[urlTw]" placeholder="https://twitter.com/yourprofile" value=twitterUrl)
 
         //- Experience Section
@@ -63,26 +70,32 @@ block content
             .experience-entry
               .form-group
                 label(for=`company${index}`) #{t('about.companyLabel')}
+                span.text-danger *
                 input(type="text" class="form-control" id=`company${index}` name=`experience[${index}][company]` placeholder=t('about.companyLabel') value=experience.company || '')
 
               .form-group
                 label(for=`title${index}`) #{t('about.titleExperienceLabel')}
+                span.text-danger *
                 input(type="text" class="form-control" id=`title${index}` name=`experience[${index}][title]` placeholder=t('about.titleExperienceLabel') value=experience.title || '')
 
               .form-group
                 label(for=`location${index}`) #{t('about.locationLabel')}
+                span.text-danger *
                 input(type="text" class="form-control" id=`location${index}` name=`experience[${index}][location]` placeholder=t('about.locationLabel') value=experience.location || '')
 
               .form-group
                 label(for=`startDate${index}`) #{t('about.startDateLabel')}
+                span.text-danger *
                 input(type="date" class="form-control" id=`startDate${index}` name=`experience[${index}][startDate]` value=experience.startDate || '' required)
 
               .form-group
                 label(for=`endDate${index}`) #{t('about.endDateLabel')}
+                span.text-danger *
                 input(type="date" class="form-control" id=`endDate${index}` name=`experience[${index}][endDate]` value=experience.endDate || '' required)
 
               .form-group
                 label(for=`description${index}`) #{t('about.descriptionLabel')}
+                span.text-danger *
                 textarea(class="form-control" id=`description${index}` name=`experience[${index}][description]` rows="3" placeholder=t('about.descriptionLabel'))= experience.description || ''
               //- Delete button with modal trigger
               button.btn.btn-danger.mt-2(type="button" data-toggle="modal" data-target=`#deleteModal${index}` aria-controls=`deleteModal${index}` aria-expanded="false" aria-label="Delete Experience Entry") #{t('button.delete')}
@@ -99,6 +112,7 @@ block content
             .skill-entry
               .form-group
                 label(for=`skillName${index}`) #{t('about.skillNameLabel')}
+                span.text-danger *
                 select.form-control(id=`skillName${index}` name=`skills[${index}][name]`)
                   option(value="") #{t('about.selectSkill')}
                   each skillOption in skillOptions
@@ -106,10 +120,12 @@ block content
 
               .form-group
                 label(for=`yearsOfExperience${index}`) #{t('about.yearsOfExperienceLabel')}
+                span.text-danger *
                 input(type="number" class="form-control" id=`yearsOfExperience${index}` name=`skills[${index}][yearsOfExperience]` placeholder=t('about.yearsOfExperienceLabel') min="0" max="50" value=skill.yearsOfExperience || '')
               // giao diện để tick chọn skill nổi bật
               .form-group
                 label.mr-2(for=`isHighlighted${index}`) #{t('about.highlightSkillLabel')}
+                span.text-danger *
                 input(type="checkbox" id=`isHighlighted${index}` name=`skills[${index}][isHighlighted]` checked=skill.isHighlighted)
               button.btn.btn-danger.mt-2(type="button" data-toggle="modal" data-target=`#deleteSkillModal${index}`) #{t('button.delete')}
               hr.mb-5

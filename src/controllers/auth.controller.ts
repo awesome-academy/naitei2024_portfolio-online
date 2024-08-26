@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
 import { LoginDto } from '~/dtos/Login.dto'
 import { RegisterDto } from '~/dtos/Register.dto'
-import { LoginError, RegisterError } from '~/enum/role'
+import { LoginError, RegisterError, Role } from '~/enum/role'
 import authService from '~/services/auth.service'
 import mailService from '~/services/mail.service'
 
@@ -56,7 +56,7 @@ export const loginPost = asyncHandler(async (req: Request, res: Response, next: 
     })
   }
   const user = result.user
-  if (!user) {
+  if (!user || !user.isActive) {
     return res.render('auth/login', {
       errors: [{ msg: req.t('status.loginFail') }]
     })
@@ -68,11 +68,15 @@ export const loginPost = asyncHandler(async (req: Request, res: Response, next: 
   req.session.user = {
     id: user.id,
     email: user.email,
-    fullname: user.fullName
+    fullname: user.fullName,
+    role: user.role
   }
   req.session.save()
   req.flash('success', req.t('status.loginSuccess'))
-  res.redirect('/')
+  if (user.role === Role.ADMIN) {
+    return res.redirect('/admin/user')
+  }
+  return res.redirect('/')
 })
 
 export const verifyEmailForm = asyncHandler(async (req: Request, res: Response) => {

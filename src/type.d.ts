@@ -1,5 +1,6 @@
 import 'express'
 import 'express-session'
+import { Role } from './enum/role';
 
 declare global {
   namespace Express {
@@ -18,6 +19,7 @@ declare module 'express-session' {
       id: string | number
       email: string
       fullname: string
+      role: Role
     }
   }
 }

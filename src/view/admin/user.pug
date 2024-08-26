@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  script(src='/scripts/admin/user.js')
+  script(src='/scripts/confirm.js')
+  div(data-scroll-container).d-flex.flex-column.align-items-center
+    if users && users.length > 0
+      each user in users
+        .border-full
+          .user-item
+            div
+              div.d-flex.justify-content-between
+                h3.strong #{user.userName}
+                if(user.isActive)
+                  button.btn.btn-danger.btn-confirm(onconfirm=`/admin/user/${user.id}/activate/false`, method='GET', message=t('status.confirmDeactivate')) #{t('button.deactivate')}
+                else
+                  button.btn.btn-primary.btn-confirm(onconfirm=`/admin/user/${user.id}/activate/true`, method='GET', message=t('status.confirmActivate')) #{t('button.activate')}
+              ul
+                li.user-item ID: #{user.id}
+                li.user-item Fullname: #{user.fullName}
+                li.user-item Email: #{user.email} 
+                li.user-item Role: #{user.role}
+                li.user-item Created At: #{user.formattedCreatedAt()}
+                li.user-item Updated At: #{user.formattedUpdatedAt()}
+    else
+      p #{t('auth.userNotFound')}
