@@ -13,7 +13,7 @@ block content
         - for(var project of projects)
           .d-flex.justify-content-end.mb-3
             a.btn.btn-primary.btn-margin-right(href=`/project/edit/${project.id}`) #{t('button.update')}
-            button.btn.btn-danger.btn-delete-project(onconfirm=`/project/delete/${project.id}`) #{t('button.delete')}
+            button.btn.btn-danger.btn-confirm(onconfirm=`/project/delete/${project.id}`, method='DELETE') #{t('button.delete')}
           .row.g-8
             if project.imageUrl
               .col-12.col-md-5(data-scroll data-scroll-speed="6" data-scroll-position="top")

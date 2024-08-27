@@ -43,7 +43,7 @@ export default class User extends BaseEntity {
     enum: Role,
     default: Role.GUEST
   })
-  role: string
+  role: Role
 
   @Column({ nullable: true })
   title: string
@@ -69,8 +69,28 @@ export default class User extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  formattedDate(date: Date) {
+    return date.toLocaleString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    })
+  }
+
+  formattedCreatedAt() {
+    return this.formattedDate(this.createdAt)
+  }
+
+  formattedUpdatedAt() {
+    return this.formattedDate(this.updatedAt)
+  }
+
   @UpdateDateColumn()
-  updated_at: Date
+  updatedAt: Date
 
   // Define relationships
   @OneToMany(() => Blog, (blog) => blog.user)
@@ -107,4 +127,7 @@ export default class User extends BaseEntity {
       Object.assign(this, data)
     }
   }
+
+  @Column({ default: true })
+  isActive: boolean
 }

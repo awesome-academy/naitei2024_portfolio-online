@@ -10,7 +10,7 @@ import {
 } from '~/controllers/blog.controller'
 import { createComment, deleteComment, updateComment } from '~/controllers/comment.controller'
 import upload from '~/middlewares/upload'
-import checkUserAuthentication from '~/middlewares/userAuthentication.middlewave'
+import { checkUserAuthentication } from '~/middlewares/authentication.middleware'
 const router = express.Router()
 
 router.get('/', checkUserAuthentication, showBlogGet)

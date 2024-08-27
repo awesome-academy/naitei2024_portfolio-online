@@ -25,7 +25,9 @@
     "changePasswordSuccess": "Thay đổi mật khẩu thành công",
     "verifyEmailCode": "Mã xác minh email",
     "verifyEmail": "Xác minh email",
-    "changePassword": "Thay đổi mật khẩu"
+    "changePassword": "Thay đổi mật khẩu",
+    "verifyEmailSuccess": "Xác minh email thành công",
+    "notAdmin": "Bạn không phải là quản trị viên"
   },
   "language": {
     "en": "Tiếng Anh",
@@ -73,7 +75,9 @@
     "NotFollow":"Bạn chưa theo dõi người dùng này",
     "followRequestSent": "Yêu cầu theo dõi đã được gửi",
     "followRequestAccept": "Yêu cầu theo dõi đã được chấp nhận",
-    "followRequestReject": "Yêu cầu theo dõi đã bị từ chối"
+    "followRequestReject": "Yêu cầu theo dõi đã bị từ chối",
+    "confirmDeactivate": "Bạn có chắc chắn muốn vô hiệu hóa tài khoản không?",
+    "confirmActivate": "Bạn có chắc chắn muốn kích hoạt tài khoản không?"
   },
   "about":{
     "titleAbout": "Thông tin cá nhân",
@@ -122,7 +126,9 @@
     "delete": "Xóa",
     "add": "Thêm",
     "edit": "Chỉnh sửa",
-    "create": "Tạo mới"
+    "create": "Tạo mới",
+    "activate": "Kích hoạt",
+    "deactivate": "Vô hiệu hóa"
   },
   "error": {
     "uploadFailed": "Tải lên thất bại"
@@ -176,7 +182,8 @@
     "linkGithubLabel": "Liên kết Github",
     "deleteSuccess": "Xóa thành công",
     "addProject": "Thêm dự án",
-    "noDataFound": "Không tìm thấy dữ liệu"
+    "noDataFound": "Không tìm thấy dữ liệu",
+    "deleteConfirmMessage": "Bạn có chắc chắn muốn xóa dự án này không?"
   },
   "notifications" : {
     "title": "Lời Mời Kết Bạn",

@@ -22,14 +22,14 @@ html(lang='en')
         span.navbar-toggler-icon
       .collapse.navbar-collapse(id='navbarSupportedContent') 
         ul.navbar-nav.mr-auto
-          if session.user
+          if session.user && session.user.role === 'user'
             li.nav-item.active
               a.nav-link(href='/about') #{t('home.about')}
             li.nav-item.active
               a.nav-link(href='/blog') #{t('home.blogs')}
             li.nav-item.active
               a.nav-link(href='/project') #{t('home.projects')}
-        if session.user
+        if session.user && session.user.role === 'user'
           form.navbar-search.ml-auto(role='search', method='GET', action='/search')
                 input.form-control.search-form(type='text', placeholder='Search', name='')
         ul.navbar-nav.float-right

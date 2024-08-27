@@ -14,10 +14,12 @@ block content
             input(type="hidden" name="id" value=blog.id)
             .form-group
               label(for="title") #{t('blog.titleLabel')}
+              span.text-danger *
               input(type="text" class="form-control" id="title" name="title" placeholder=t('blog.titleLabel') value=blog.title required)
 
             .form-group
               label(for="description") #{t('blog.descriptionLabel')}
+              span.text-danger *
               textarea(class="form-control" id="description" name="description" rows="5" placeholder=t('blog.descriptionLabel') required)=blog.description
 
             // Hiển thị hình ảnh hiện tại nếu có
@@ -27,10 +29,12 @@ block content
               
             .form-group
               label(for="imageUrl") #{t('blog.imageLabel')}
+              span.text-danger *
               input(type="file" class="form-control" id="imageUrl" name="imageUrl")
 
             .form-group
               label(for="content") #{t('blog.contentLabel')}
+              span.text-danger *
               textarea(class="form-control" id="content" name="content" rows="10" placeholder=t('blog.contentLabel') required)=blog.content
 
             h4.mt-4 #{t('blog.additionalImagesSection')}

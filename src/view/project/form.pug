@@ -9,26 +9,32 @@ block content
         .form-group
           input(type="hidden" name="id" value=project.id)
         .form-group
-          label(for="image") #{t('project.imageLabel')}
+          label(for="image") #{t('project.imageLabel')} 
+          span.text-danger *
           input(type="file" accept="image/png, image/jpeg" class="form-control" id="image" name="image" placeholder=t('project.imageUrlLabel'))
         .form-group
           label(for="name") #{t('project.nameLabel')}
+          span.text-danger *
           input(type="text" class="form-control" id="name" name="name" placeholder=t('project.nameLabel') value=project.name)
           
         .form-group
           label(for="overview") #{t('project.overviewLabel')}
+          span.text-danger *
           textarea(class="form-control" id="overview" name="overview" rows="3" placeholder=t('project.overviewLabel'))=project.overview
           
         .form-group
           label(for="whatYouLearn") #{t('project.whatYouLearnLabel')}
+          span.text-danger *
           textarea(class="form-control" id="whatYouLearn" name="whatYouLearn" rows="3" placeholder=t('project.whatYouLearnLabel'))=project.whatYouLearn
           
         .form-group
           label(for="keyFeatures") #{t('project.keyFeaturesLabel')}
+          span.text-danger *
           textarea(class="form-control" id="keyFeatures" name="keyFeatures" rows="3" placeholder=t('project.keyFeaturesLabel'))=project.keyFeatures
           
         .form-group
           label(for="linkGithub") #{t('project.linkGithubLabel')}
+          span.text-danger *
           input(type="text" class="form-control" id="linkGithub" name="linkGithub" placeholder=t('project.linkGithubLabel') value=project.linkGithub)
           
         button(type="submit" class="btn btn-primary") #{t('button.update')}

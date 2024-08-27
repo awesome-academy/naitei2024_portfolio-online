@@ -13,18 +13,22 @@ block content
 
             .form-group
               label(for="title") #{t('blog.titleLabel')}
+              span.text-danger *
               input(type="text" class="form-control" id="title" name="title" placeholder=t('blog.titleLabel') required)
 
             .form-group
               label(for="description") #{t('blog.descriptionLabel')}
+              span.text-danger *
               textarea(class="form-control" id="description" name="description" rows="3" placeholder=t('blog.descriptionLabel') required)
 
             .form-group
               label(for="imageUrl") #{t('blog.imageLabel')}
+              span.text-danger *
               input(type="file" class="form-control" id="imageUrl" name="imageUrl")
 
             .form-group
               label(for="content") #{t('blog.contentLabel')}
+              span.text-danger *
               textarea(class="form-control" id="content" name="content" rows="10" placeholder=t('blog.contentLabel') required)
 
             h4.mt-4 #{t('blog.additionalImagesSection')}

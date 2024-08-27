@@ -25,7 +25,9 @@
     "changePasswordSuccess": "Change password successfully",
     "verifyEmailCode": "Verify Email Code",
     "verifyEmail": "Verify Email",
-    "changePassword": "Change Password"
+    "changePassword": "Change Password",
+    "verifyEmailSuccess": "Verify email successfully",
+    "notAdmin": "You are not an admin"
   },
   "language": {
     "en": "English",
@@ -73,7 +75,9 @@
     "NotFollow":"You are not following this user",
     "followRequestSent":"Follow request sent",
     "followRequestAccepted":"Follow request accepted",
-    "followRequestRejected":"Follow request rejected"
+    "followRequestRejected":"Follow request rejected",
+    "confirmDeactivate": "Are you sure you want to deactivate this account?",
+    "confirmActivate": "Are you sure you want to activate this account?"
   },
   "about":{
     "titleAbout": "About Me",
@@ -121,7 +125,9 @@
     "delete": "Delete",
     "edit": "Edit",
     "add": "Add",
-    "create": "Create"
+    "create": "Create",
+    "activate": "Activate",
+    "deactivate": "Deactivate"
   },
   "blog":{
     "title": "Blogs",
@@ -176,7 +182,8 @@
     "linkGithubLabel": "Link Github",
     "deleteSuccess": "Delete successfully",
     "addProject": "Add Project",
-    "noDataFound":"No data found"
+    "noDataFound":"No data found",
+    "deleteConfirmMessage": "Are you sure you want to delete this project?"
   },
   "notifications": {
     "title": " Friend Request",
