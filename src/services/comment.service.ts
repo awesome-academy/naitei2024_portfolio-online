@@ -5,7 +5,7 @@ class CommentService {
   private commentRepository = AppDataSource.getRepository(Comment)
 
   async getCommentById(commentId: number): Promise<Comment | null> {
-    return this.commentRepository.findOne({ where: { id: commentId } })
+    return this.commentRepository.findOne({ where: { id: commentId }, relations: ['blog'] })
   }
 
   async getCommentsByBlogId(blogId: number): Promise<Comment[]> {

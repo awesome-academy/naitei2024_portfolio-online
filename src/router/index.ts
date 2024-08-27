@@ -10,6 +10,7 @@ import guestRoute from './guest/guest.router'
 import { showNotification } from '~/controllers/notification.controller'
 import { checkUserAuthentication } from '~/middlewares/authentication.middleware'
 import adminRoute from './admin/admin.router'
+import searchRouter from './search/search.router'
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -33,4 +34,5 @@ router.use('/skill', skillRoute)
 router.use('/blog', blogRoute)
 router.use('/guest', guestRoute)
 router.use('/admin', adminRoute)
+router.use('/search', searchRouter)
 export default router

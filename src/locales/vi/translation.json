@@ -191,5 +191,9 @@
     "reject": "Từ chối",
     "noPendingRequests": "Không có yêu cầu nào"
 
+  },
+  "search": {
+    "noResult": "Không tìm thấy kết quả",
+    "searchResult": "Kết quả tìm kiếm"
   }
 }
