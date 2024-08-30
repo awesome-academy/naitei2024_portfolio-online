@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import dotenv from 'dotenv'
-dotenv.config()
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env' })
 function sha256(content: string) {
   return createHash('sha256').update(content).digest('hex')
 }

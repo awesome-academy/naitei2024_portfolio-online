@@ -13,7 +13,7 @@ import i18next from 'i18next'
 import Backend from 'i18next-fs-backend'
 import middleware from 'i18next-http-middleware'
 
-dotenv.config()
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env' })
 
 const secret = process.env.SESSION_SECRET || 'secret'
 

@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm'
 import { join } from 'path'
 import dotenv from 'dotenv'
-dotenv.config()
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env' })
 
 const { MYSQL_HOST, MYSQL_PORT, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env
 const PORT = MYSQL_PORT ? parseInt(MYSQL_PORT) : 3306
