@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import { v2 as cloudinary, UploadApiResponse, UploadApiErrorResponse } from 'cloudinary'
 import sharp from 'sharp'
 
-dotenv.config()
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env' })
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,

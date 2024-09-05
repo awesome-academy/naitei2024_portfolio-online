@@ -3,8 +3,8 @@ import PendingVerification from '~/entity/pending_verification.entity'
 import nodemailer = require('nodemailer')
 import User from '~/entity/user.entity'
 import * as dotenv from 'dotenv'
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env' })
 
-dotenv.config()
 class MailService {
   private verificationRepository = AppDataSource.getRepository(PendingVerification)
   private userRepository = AppDataSource.getRepository(User)

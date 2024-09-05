@@ -69,6 +69,9 @@ export default class User extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @UpdateDateColumn()
+  updatedAt: Date
+
   formattedDate(date: Date) {
     return date.toLocaleString('en-US', {
       year: 'numeric',
@@ -88,9 +91,6 @@ export default class User extends BaseEntity {
   formattedUpdatedAt() {
     return this.formattedDate(this.updatedAt)
   }
-
-  @UpdateDateColumn()
-  updatedAt: Date
 
   // Define relationships
   @OneToMany(() => Blog, (blog) => blog.user)
